@@ -10,7 +10,7 @@ Our proposals mitigate the problem by,
 
 
 <div align="center">
-  <img src="demo/AdaFree.gif" width="800px" />
+  <img src="demo/AdaFree.gif" width="600px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
 
@@ -19,7 +19,7 @@ Our proposals mitigate the problem by,
 
 | Models  | VOT18 | VOT19 | OTB15 | GOT10K | LASOT| 
 | :------ | :------: | :------: | :------: | :------: | :------: |
-| Offline  | 0.467 | 0.327 | 0.671 | 0.592 | 0.526 |  
+| Offline  | 0.467 | 0.327 | 0.673 | 0.592 | 0.526 |  
 | Online |  |  |  |  | |  
 | Raw Results| | |  |  | |  
 
