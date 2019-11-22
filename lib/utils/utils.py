@@ -25,7 +25,7 @@ from shapely.geometry import Polygon, box
 from os.path import join, realpath, dirname, exists
 
 # ATOM import
-from atom import TensorList, load_network
+#from atom import TensorList, load_network
 
 
 
