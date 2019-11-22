@@ -1,0 +1,8 @@
+TEST:
+  OTB2015:
+    penalty_k: 0.087
+    lr: 0.408
+    window_influence: 0.366
+    small_sz: 271
+    big_sz: 271
+

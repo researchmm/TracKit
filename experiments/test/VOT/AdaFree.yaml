@@ -1,0 +1,15 @@
+TEST:
+  VOT2018:
+    penalty_k: 0.021
+    lr: 0.730
+    window_influence: 0.321
+    small_sz: 255
+    big_sz: 271
+    ratio: 0.93
+  VOT2019:
+    penalty_k: 0.062
+    lr: 0.765
+    window_influence: 0.380
+    small_sz: 255
+    big_sz: 271
+    ratio: 0.94
