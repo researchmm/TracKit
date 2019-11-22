@@ -55,7 +55,7 @@ Download [pre-trained models](https://drive.google.com/drive/folders/1nkSTnyLQid
 
 ### Test
 ```
-python adafree_tracking/test_adafree.py --arch AdaFree --dataset VOT2019 --epoch_test False
+python adafree_tracking/test_adafree.py --arch AdaFree --dataset VOT2019
 ```
 
 ### Evaluation
