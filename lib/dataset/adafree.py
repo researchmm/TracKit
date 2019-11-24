@@ -34,27 +34,27 @@ class AdaDataset(Dataset):
     def __init__(self, cfg):
         super(AdaDataset, self).__init__()
         # pair information
-        self.template_size = cfg.SIAMFC.TRAIN.TEMPLATE_SIZE
-        self.search_size = cfg.SIAMFC.TRAIN.SEARCH_SIZE
+        self.template_size = cfg.ADAFREE.TRAIN.TEMPLATE_SIZE
+        self.search_size = cfg.ADAFREE.TRAIN.SEARCH_SIZE
 
         self.size = 25
-        self.stride = cfg.SIAMFC.TRAIN.STRIDE
+        self.stride = cfg.ADAFREE.TRAIN.STRIDE
 
         # aug information
-        self.color = cfg.SIAMFC.DATASET.COLOR
-        self.flip = cfg.SIAMFC.DATASET.FLIP
-        self.rotation = cfg.SIAMFC.DATASET.ROTATION
-        self.blur = cfg.SIAMFC.DATASET.BLUR
-        self.shift = cfg.SIAMFC.DATASET.SHIFT
-        self.scale = cfg.SIAMFC.DATASET.SCALE
-        self.gray = cfg.SIAMFC.DATASET.GRAY
-        self.label_smooth = cfg.SIAMFC.DATASET.LABELSMOOTH
-        self.mixup = cfg.SIAMFC.DATASET.MIXUP
-        self.cutout = cfg.SIAMFC.DATASET.CUTOUT
+        self.color = cfg.ADAFREE.DATASET.COLOR
+        self.flip = cfg.ADAFREE.DATASET.FLIP
+        self.rotation = cfg.ADAFREE.DATASET.ROTATION
+        self.blur = cfg.ADAFREE.DATASET.BLUR
+        self.shift = cfg.ADAFREE.DATASET.SHIFT
+        self.scale = cfg.ADAFREE.DATASET.SCALE
+        self.gray = cfg.ADAFREE.DATASET.GRAY
+        self.label_smooth = cfg.ADAFREE.DATASET.LABELSMOOTH
+        self.mixup = cfg.ADAFREE.DATASET.MIXUP
+        self.cutout = cfg.ADAFREE.DATASET.CUTOUT
 
         # aug for search image
-        self.shift_s = cfg.SIAMFC.DATASET.SHIFTs
-        self.scale_s = cfg.SIAMFC.DATASET.SCALEs
+        self.shift_s = cfg.ADAFREE.DATASET.SHIFTs
+        self.scale_s = cfg.ADAFREE.DATASET.SCALEs
 
         self.grids()
 
@@ -68,11 +68,11 @@ class AdaDataset(Dataset):
         )
 
         # train data information
-        print('train datas: {}'.format(cfg.SIAMFC.TRAIN.WHICH_USE))
+        print('train datas: {}'.format(cfg.ADAFREE.TRAIN.WHICH_USE))
         self.train_datas = []    # all train dataset
         start = 0
         self.num = 0
-        for data_name in cfg.SIAMFC.TRAIN.WHICH_USE:
+        for data_name in cfg.ADAFREE.TRAIN.WHICH_USE:
             dataset = subData(cfg, data_name, start)
             self.train_datas.append(dataset)
             start += dataset.num         # real video number
@@ -418,7 +418,7 @@ class subData(object):
         self.data_name = data_name
         self.start = start
 
-        info = cfg.SIAMFC.DATASET[data_name]
+        info = cfg.ADAFREE.DATASET[data_name]
         self.frame_range = info.RANGE
         self.num_use = info.USE
         self.root = info.PATH

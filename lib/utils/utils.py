@@ -769,14 +769,14 @@ def print_speed(i, i_time, n, logger):
     logger.info('\nPROGRESS: {:.2f}%\n'.format(100 * i / n))  # for philly. let's reduce it in case others kill our job 100-25
 
 
-def create_logger(cfg, modelFlag='SIAMFC', phase='train'):
+def create_logger(cfg, modelFlag='ADAFREE', phase='train'):
     root_output_dir = Path(cfg.OUTPUT_DIR)
     # set up logger
     if not root_output_dir.exists():
         print('=> creating {}'.format(root_output_dir))
         root_output_dir.mkdir()
 
-    model = cfg.SIAMFC.TRAIN.MODEL if modelFlag == 'SIAMFC' else cfg.SIAMRPN.TRAIN.MODEL
+    model = cfg.ADAFREE.TRAIN.MODEL
 
     final_output_dir = root_output_dir / model
 
@@ -991,16 +991,16 @@ def _build_lr_scheduler(optimizer, config, epochs=50, last_epoch=-1):
 
 
 def _build_warm_up_scheduler(optimizer, cfg, epochs=50, last_epoch=-1):
-    warmup_epoch = cfg.SIAMFC.TRAIN.WARMUP.EPOCH
-    sc1 = _build_lr_scheduler(optimizer, cfg.SIAMFC.TRAIN.WARMUP,
+    warmup_epoch = cfg.ADAFREE.TRAIN.WARMUP.EPOCH
+    sc1 = _build_lr_scheduler(optimizer, cfg.ADAFREE.TRAIN.WARMUP,
                               warmup_epoch, last_epoch)
-    sc2 = _build_lr_scheduler(optimizer, cfg.SIAMFC.TRAIN.LR,
+    sc2 = _build_lr_scheduler(optimizer, cfg.ADAFREE.TRAIN.LR,
                               epochs - warmup_epoch, last_epoch)
     return WarmUPScheduler(optimizer, sc1, sc2, epochs, last_epoch)
 
 
 def build_lr_scheduler(optimizer, cfg, epochs=50, last_epoch=-1):
-    if cfg.SIAMFC.TRAIN.WARMUP.IFNOT:
+    if cfg.ADAFREE.TRAIN.WARMUP.IFNOT:
         return _build_warm_up_scheduler(optimizer, cfg, epochs, last_epoch)
     else:
         return _build_lr_scheduler(optimizer, cfg.TRAIN.LR, epochs, last_epoch)
