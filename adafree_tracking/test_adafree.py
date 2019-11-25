@@ -138,7 +138,10 @@ def main():
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
-    endding = 'OG' if  'OTB' in args.dataset or 'GOT' in args.dataset else args.dataset[0]
+    endding = 'O' if  'OTB' in args.dataset
+    endding = 'G' if  'GOT' in args.dataset
+    endding = 'L' if  'LASOT' in args.dataset
+    endding = 'V' if  'VOT' in args.dataset
 
     args.resume = 'snapshot/AdaFree_' + endding + '.model'
     net = load_pretrain(net, args.resume)
