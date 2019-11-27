@@ -35,7 +35,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='PyTorch SiamFC Tracking Test')
     parser.add_argument('--arch', dest='arch', default='AdaFree', help='backbone architecture')
     parser.add_argument('--resume', default="snapshot/AdaFree_V.model", type=str, help='pretrained model')
-    parser.add_argument('--dataset', default='OTB2015', help='dataset test')
+    parser.add_argument('--dataset', default='VOT2019', help='dataset test')
     parser.add_argument('--epoch_test', default=False, type=bool, help='multi-gpu epoch test flag')
     args = parser.parse_args()
 
@@ -138,10 +138,10 @@ def main():
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
-    endding = 'O' if  'OTB' in args.dataset
-    endding = 'G' if  'GOT' in args.dataset
-    endding = 'L' if  'LASOT' in args.dataset
-    endding = 'V' if  'VOT' in args.dataset
+    endding = 'O' if 'OTB' in args.dataset else None
+    endding = 'G' if 'GOT' in args.dataset else None
+    endding = 'L' if 'LASOT' in args.dataset else None
+    endding = 'V' if 'VOT' in args.dataset else None
 
     args.resume = 'snapshot/AdaFree_' + endding + '.model'
     net = load_pretrain(net, args.resume)

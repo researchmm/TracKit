@@ -79,10 +79,8 @@ def main():
     # tuning -- with TPE
     if tuneINFO['ISTRUE']:
 
-        if 'VOT' in testINFO['DATA'] and 'LT' not in testINFO['DATA'] or 'OTB' in testINFO['DATA']:   # for vot real-time and baseline
-            resume = "matrix_stage4_0.438.pth"
-        elif 'LT' in testINFO['DATA']:                                     # for vot longterm
-            pass
+        if 'VOT' in testINFO['DATA']:   # for vot real-time and baseline
+            resume = extract_logs('logs/adafree_eval_epochs.log', 'VOT')
         else:
             raise ValueError('not supported now')
 

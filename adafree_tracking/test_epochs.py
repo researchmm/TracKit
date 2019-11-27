@@ -50,4 +50,4 @@ for i in range(2):
     resume = 'snapshot/checkpoint_e{}.pth'.format(epoch_ID)
     print('==> test {}th epoch'.format(epoch_ID))
 
-    os.system('python ./siamese_tracking/test_adafree.py --arch {0} --resume {1} --dataset {2} --epoch_test True'.format(arch, resume, dataset))
+    os.system('python ./adafree_tracking/test_adafree.py --arch {0} --resume {1} --dataset {2} --epoch_test True'.format(arch, resume, dataset))
