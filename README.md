@@ -10,7 +10,7 @@ Our proposals mitigate the problem by,
 
 
 <div align="center">
-  <img src="demo/AdaFree.gif" width="600px" />
+  <img src="demo/AdaFree.gif" width="800px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
 
