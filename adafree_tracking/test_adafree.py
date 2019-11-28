@@ -138,11 +138,16 @@ def main():
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
-    endding = 'O' if 'OTB' in args.dataset else None
-    endding = 'G' if 'GOT' in args.dataset else None
-    endding = 'L' if 'LASOT' in args.dataset else None
-    endding = 'V' if 'VOT' in args.dataset else None
-
+    if 'OTB' in args.dataset:
+        ending = 'O'
+    elif 'GOT' in args.dataset:
+        ending = 'G'
+    elif 'LASOT' in args.dataset:
+        ending = 'L'
+    elif 'VOT' in args.dataset:
+        ending = 'V'
+    else:
+        raise ValueError('dataset not supported now')
     args.resume = 'snapshot/AdaFree_' + endding + '.model'
     net = load_pretrain(net, args.resume)
     net.eval()
