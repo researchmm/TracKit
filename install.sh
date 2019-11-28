@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -ne 1 ]; then
-    echo "ERROR! Illegal number of parameters. Usage: bash install.sh conda_install_path environment_name"
+    echo "ERROR! Illegal number of parameters. Usage: bash install.sh environment_name"
     exit 0
 fi
 
@@ -37,6 +37,11 @@ echo ""
 echo "****************** Installing numba/colorma ******************"
 pip install numba --user
 pip install colorma --user
+
+echo ""
+echo ""
+echo "****************** Installing matplotlib ******************"
+pip install matplotlib --user
 
 echo ""
 echo ""
