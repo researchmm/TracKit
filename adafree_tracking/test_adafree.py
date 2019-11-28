@@ -148,7 +148,7 @@ def main():
         ending = 'V'
     else:
         raise ValueError('dataset not supported now')
-    args.resume = 'snapshot/AdaFree_' + endding + '.model'
+    args.resume = 'snapshot/AdaFree_' + ending + '.model'
     net = load_pretrain(net, args.resume)
     net.eval()
     net = net.cuda()
