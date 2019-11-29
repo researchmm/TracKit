@@ -10,7 +10,7 @@ Our proposals mitigate the problem by,
 
 
 <div align="center">
-  <img src="demo/AdaFree.gif" width="600px" />
+  <img src="demo/AdaFree.gif" width="800px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
 
@@ -72,7 +72,7 @@ Lift is short, let's release our hands and brain. With our toolkit, you don't ne
 Coming Soon...
 ```
 Now you can go to bed for a good sleep. The favorable results will come with dawn. -->
-:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
+:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
 ## Citation
 If any part of our paper and code is helpful to your work, please generously cite with:
 
