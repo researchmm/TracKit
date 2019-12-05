@@ -1,5 +1,5 @@
 ADAFREE:
-  GPUS: '0,1'
+  GPUS: '0,1,2,3,4,5,6,7'
   PRINT_FREQ: 10
   WORKERS: 32
   OUTPUT_DIR: 'logs'   # log file
@@ -76,13 +76,13 @@ ADAFREE:
       RANGE: 100
       USE: 100000
     YTB:
-      PATH: '/data2/LARGESIAM/got10k/y2b/crop511'
-      ANNOTATION: '/data2/LARGESIAM/y2b/all.json'
+      PATH: '/data2/LARGESIAM/y2b/crop511'
+      ANNOTATION: '/data2/LARGESIAM/y2b/train.json'
       RANGE: 3
       USE: 200000
     GOT10K:
       PATH: '/data2/LARGESIAM/got10k/crop511'
-      ANNOTATION: '/data2/LARGESIAM/got10k/train.json'
+      ANNOTATION: '/data2/LARGESIAM/got10k/all.json'
       RANGE: 100
       USE: 200000
     DET:
