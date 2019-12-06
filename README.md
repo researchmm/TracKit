@@ -73,6 +73,26 @@ Coming Soon...
 ```
 Now you can go to bed for a good sleep. The favorable results will come with dawn. -->
 :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
+### Train
+#### prepare data
+Please download training data from [here]().
+
+#### prepare pretrained model
+Please download the pretrained model on ImageNet [here](https://drive.google.com/file/d/1DmclP0ZU1wRNT9ygEp02pWXqBQcvsqlw/view?usp=sharing), and then put it in `pretrain`.
+
+#### modify settings
+Please modify the training settings in `experiments/train/AdaFree.yaml`. The default number of GPU and batch size in paper are 8 and 32 respectively. 
+
+#### run
+```
+python adafree_tracking/onekey.py
+```
+This script integrates **train**, **epoch test** and **tune**. It is suggested to debug/run them one by one when you are not familiar with our whole framework. When you know this framework well, simply intergrate your idea and run this one-key script.
+
+
+
+
+:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
 ## Citation
 If any part of our paper and code is helpful to your work, please generously cite with:
 
