@@ -49,7 +49,7 @@ ADAFREE:
     DATA: 'VOT2018'
     START_EPOCH: 30
     END_EPOCH: 50
-    RGBTSPLIT: "RGB"  # None for main channel, 'RGB' and 'T' for RGBT
+    RGBTSPLIT: None  # None for main channel, 'RGB' and 'T' for RGBT
   TUNE:    # TUNE model is same as TRAIN.MODEL
     ISTRUE: False  # whether to tune
     DATA: 'VOT2018'
