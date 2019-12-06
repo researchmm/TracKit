@@ -180,7 +180,7 @@ def track_tune(tracker, net, video, config):
     tracker_path = join('test', (benchmark_name + resume.split('/')[-1].split('.')[0] +
                                      '_small_size_{:.4f}'.format(hp['small_sz']) +
                                      '_big_size_{:.4f}'.format(hp['big_sz']) +
-                                     # '_adaptive_{:.4f}'.format(hp['adaptive']) +
+                                     '_ratio_{:.4f}'.format(hp['ratio']) +
                                      '_penalty_k_{:.4f}'.format(hp['penalty_k']) +
                                      '_w_influence_{:.4f}'.format(hp['window_influence']) +
                                      '_scale_lr_{:.4f}'.format(hp['lr'])).replace('.', '_'))  # no .
