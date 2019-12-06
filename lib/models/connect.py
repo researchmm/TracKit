@@ -82,11 +82,11 @@ class AdjustLayer(nn.Module):
             nn.BatchNorm2d(out_channels),
             )
 
-    def forward(self, x):
+    def forward(self, x, crop=False):
         x = self.downsample(x)
-        if x.size(3) < 20:
+        if x.size(3) < 20 and crop:
             l = 4
-            r = l + 7
+            r = -4
             x = x[:, :, l:r, l:r]
         return x
 

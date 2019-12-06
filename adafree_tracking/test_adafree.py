@@ -138,17 +138,19 @@ def main():
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
-    if 'OTB' in args.dataset:
-        ending = 'O'
-    elif 'GOT' in args.dataset:
-        ending = 'G'
-    elif 'LASOT' in args.dataset:
-        ending = 'L'
-    elif 'VOT' in args.dataset:
-        ending = 'V'
-    else:
-        raise ValueError('dataset not supported now')
-    args.resume = 'snapshot/AdaFree_' + ending + '.model'
+    if not args.epoch_test:
+        if 'OTB' in args.dataset:
+            ending = 'O'
+        elif 'GOT' in args.dataset:
+            ending = 'G'
+        elif 'LASOT' in args.dataset:
+            ending = 'L'
+        elif 'VOT' in args.dataset:
+            ending = 'V'
+        else:
+            raise ValueError('dataset not supported now')
+        
+        args.resume = 'snapshot/AdaFree_' + ending + '.model'
     net = load_pretrain(net, args.resume)
     net.eval()
     net = net.cuda()

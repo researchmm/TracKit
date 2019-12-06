@@ -21,7 +21,7 @@ class AdaFree_(nn.Module):
         # self.bbox_tower = None
         self.neck = None
         self.search_size = 255
-        self.score_size = 25
+        self.score_size = 11
         self.batch = 32 if self.training else 1
 
         self.grids()
@@ -273,7 +273,7 @@ class AdaFree_(nn.Module):
         self.zf = self.feature_extractor(z)
 
         if self.neck is not None:
-            self.zf = self.neck(self.zf)
+            self.zf = self.neck(self.zf, crop=True)
 
         if self.align_head is not None:
             self.update_flag = True
@@ -314,8 +314,8 @@ class AdaFree_(nn.Module):
         xf = self.feature_extractor(search)
 
         if self.neck is not None:
-            zf = self.neck(zf)
-            xf = self.neck(xf)
+            zf = self.neck(zf, crop=True)
+            xf = self.neck(xf, crop=False)
 
         # depth-wise cross correlation --> tower --> box pred
         if self.align_head is not None:
@@ -338,7 +338,7 @@ class AdaFree_(nn.Module):
 
             return cls_loss_ori, cls_loss, reg_loss
         else:
-            bbox_pred, cls_pred = self.connect_model(xf, zf)
+            bbox_pred, cls_pred, _, _ = self.connect_model(xf, zf)
             reg_loss = self.add_iouloss(bbox_pred, reg_target, reg_weight)
             cls_loss = self._weighted_BCE(cls_pred, label)
             return cls_loss, None, reg_loss
