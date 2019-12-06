@@ -67,14 +67,15 @@ def main():
                   .format(testINFO['THREADS'], trainINFO['MODEL'], testINFO['START_EPOCH'], testINFO['END_EPOCH'],
                           (len(info['GPUS']) + 1) // 2, testINFO['DATA'], testINFO['RGBTSPLIT']))
 
-        # test on vot or otb benchmark
-        if 'OTB' in testINFO['DATA']:
-            os.system('python ./lib/core/eval_otb.py {0} ./result SiamFC* 0 100 2>&1 | tee logs/adafree_eval_epochs.log'.format(testINFO['DATA']))
-        elif 'VOT' in testINFO['DATA']:
-            os.system('python ./lib/core/eval_vot.py {0} ./result 2>&1 | tee logs/adafree_eval_epochs.log'.format(testINFO['DATA']))
-        else:
-            raise ValueError('not supported now, please add new dataset test model')
-
+    # test on vot or otb benchmark
+    print('====> use new testing toolkit')
+    trackers = os.listdir(os.path.join('./result', testINFO['DATA']))
+    trackers = " ".join(trackers)
+    if 'VOT' in testINFO['DATA']:
+        print('python lib/eval_toolkit/bin/eval.py --dataset_dir dataset --dataset {0} --tracker_result_dir result/{0} --trackers {1}'.format(testINFO['DATA'], trackers))
+        os.system('python lib/eval_toolkit/bin/eval.py --dataset_dir dataset --dataset {0} --tracker_result_dir result/{0} --trackers {1}'.format(testINFO['DATA'], trackers))
+    else:
+        raise ValueError('not supported now, please add new dataset')
 
     # tuning -- with TPE
     if tuneINFO['ISTRUE']:
