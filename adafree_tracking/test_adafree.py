@@ -134,7 +134,8 @@ def main():
     info.arch = args.arch
     info.dataset = args.dataset
     info.epoch_test = args.epoch_test
-    info.align = True if 'VOT' in args.dataset else False
+    #info.align = True if 'VOT' in args.dataset else False
+    info.align = False
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
@@ -176,21 +177,13 @@ def track_tune(tracker, net, video, config):
     resume = config['resume']
     hp = config['hp']  # scale_step, scale_penalty, scale_lr, window_influence
 
-    if 'FCOS' in arch:
-        tracker_path = join('test', (benchmark_name + resume.split('/')[-1].split('.')[0] +
+    tracker_path = join('test', (benchmark_name + resume.split('/')[-1].split('.')[0] +
                                      '_small_size_{:.4f}'.format(hp['small_sz']) +
                                      '_big_size_{:.4f}'.format(hp['big_sz']) +
                                      # '_adaptive_{:.4f}'.format(hp['adaptive']) +
                                      '_penalty_k_{:.4f}'.format(hp['penalty_k']) +
                                      '_w_influence_{:.4f}'.format(hp['window_influence']) +
                                      '_scale_lr_{:.4f}'.format(hp['lr'])).replace('.', '_'))  # no .
-    else:
-        tracker_path = join('test', (benchmark_name + resume.split('/')[-1].split('.')[0] +
-                                     '_step_{:.4f}'.format(hp['scale_step']) +
-                                     '_penalty_s_{:.4f}'.format(hp['scale_penalty']) +
-                                     '_w_influence_{:.4f}'.format(hp['w_influence']) +
-                                     '_scale_lr_{:.4f}'.format(hp['scale_lr'])).replace('.', '_'))  # no .
-
     if not os.path.exists(tracker_path):
         os.makedirs(tracker_path)
 

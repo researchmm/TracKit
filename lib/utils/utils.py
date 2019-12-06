@@ -837,9 +837,8 @@ def extract_eaos(lines):
     eaos = []
     for line in lines:
         print(line)
-
         # if not line.startswith('[*]'):   # matlab version
-        if not line.startswith('| Siam'):
+        if not line.startswith('| Ada'):
             continue
         temp = line.split('|')
         epochs.append(int(temp[1].split('_e')[-1]))
@@ -847,7 +846,6 @@ def extract_eaos(lines):
     # fine bese epoch
     idx = eaos.index(max(eaos))
     epoch = epochs[idx]
-
     return epoch
 
 

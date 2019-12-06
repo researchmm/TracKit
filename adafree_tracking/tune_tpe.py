@@ -6,10 +6,8 @@ import numpy as np
 
 import models.models as models
 from utils.utils import load_pretrain
-from test_siamfc import auc_otb, eao_vot, auc_visdrone, auc_got10k
-from test_siamrpn import auc_otb_rpn, eao_vot_rpn
-from tracker.siamfc import SiamFC
-from tracker.siamrpn import SiamRPN
+from test_adafree import auc_otb, eao_vot, auc_visdrone, auc_got10k
+from tracker.adafree import AdaFree
 from easydict import EasyDict as edict
 
 import ray
@@ -17,7 +15,7 @@ from ray import tune
 from ray.tune.schedulers import AsyncHyperBandScheduler
 from ray.tune.suggest import HyperOptSearch
 from hyperopt import hp
-
+from pprint import pprint
 
 parser = argparse.ArgumentParser(description='parameters for SiamFC tracker')
 parser.add_argument('--arch', dest='arch', default='SiamFCRes23',
@@ -25,7 +23,6 @@ parser.add_argument('--arch', dest='arch', default='SiamFCRes23',
 parser.add_argument('--resume', default='', type=str, required=True,
                     help='resumed model')
 parser.add_argument('--gpu_nums', default=4, type=int, help='gpu numbers')
-parser.add_argument('--anchor_nums', default=5, type=int,  help='anchor numbers for rpn')
 parser.add_argument('--dataset', default='OTB2013', type=str, help='dataset')
 parser.add_argument('--RGBTSPLIT', default=None, type=str, help='RGB or T or None')
 args = parser.parse_args()
@@ -33,19 +30,17 @@ args = parser.parse_args()
 print('==> TPE works well with both SiamFC and SiamRPN')
 print('==> However TPE is slower than GENE')
 
-# prepare tracker -- rpn waited
+# prepare tracker 
 info = edict()
 info.arch = args.arch
 info.dataset = args.dataset
 info.epoch_test = False
 
-# create model
-if 'SiamFC' in args.arch:
-    model = models.__dict__[args.arch]()
-    tracker = SiamFC(info)
-elif 'SiamRPN' in args.arch:
-    model = models.__dict__[args.arch](anchors_nums=args.anchor_nums)
-    tracker = SiamRPN(info)
+# create modeli
+info.align = True if 'VOT' in args.dataset else False
+if 'AdaFree' in args.arch:
+    model = models.__dict__[args.arch](align=info.align)
+    tracker = AdaFree(info)
 else:
     raise ValueError('not supported other model now')
 
@@ -58,22 +53,7 @@ print('pretrained model has been loaded')
 # fitness function
 def fitness(config, reporter):
     # different params for SiamFC and SiamRPN
-    if 'SiamFC' in args.arch and 'FCOS' not in args.arch:
-        scale_step = config["scale_step"]
-        scale_penalty = config["scale_penalty"]
-        scale_lr = config["scale_lr"]
-        w_influence = config["w_influence"]
-        model_config = dict()
-        model_config['benchmark'] = args.dataset
-        model_config['RGBTSPLIT'] = args.RGBTSPLIT  # RGB OR T OR NONE
-        model_config['arch'] = args.arch
-        model_config['resume'] = args.resume
-        model_config['hp'] = dict()
-        model_config['hp']['scale_step'] = scale_step
-        model_config['hp']['scale_penalty'] = scale_penalty
-        model_config['hp']['w_influence'] = w_influence
-        model_config['hp']['scale_lr'] = scale_lr
-    elif 'SiamRPN' in args.arch or 'FCOS' in args.arch:
+    if 'AdaFree' in args.arch:
         penalty_k = config["penalty_k"]
         scale_lr = config["scale_lr"]
         window_influence = config["window_influence"]
@@ -92,56 +72,22 @@ def fitness(config, reporter):
         model_config['hp']['small_sz'] = small_sz
         model_config['hp']['big_sz'] = big_sz
         model_config['hp']['ratio'] = ratio
+    else:
+        raise ValueError('not supported model')
 
 
-    # OTB and SiamFC
-    if args.dataset.startswith('OTB') and 'SiamFC' in args.arch and 'FCOS' not in args.arch:
-        auc = auc_otb(tracker, model, model_config)
-        print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, auc: {4}".format(scale_step, scale_lr, scale_penalty, w_influence, auc.item()))
-        reporter(AUC=auc)
-
-    # OTB and SiamRPN
-    if args.dataset.startswith('OTB') and 'SiamRPN' in args.arch:
-        auc = auc_otb_rpn(model, model_config)
-        print("penalty_k: {0}, scale_lr: {1}, window_influence: {2}, small_sz: {3}, big_sz: {4}, eao: {5}".format(penalty_k, scale_lr, window_influence, small_sz, big_sz, auc.item()))
-        reporter(AUC=auc)
-
-
-    # VOT and SiamFC
-    if args.dataset.startswith('VOT') and 'SiamFC' in args.arch and 'FCOS' not in args.arch:
-        eao = eao_vot(tracker, model, model_config)
-        print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, eao: {4}".format(scale_step, scale_lr, scale_penalty, w_influence, eao))
-        reporter(EAO=eao)
-
-    # VOT and SiamFCOS
-    if args.dataset.startswith('VOT') and 'FCOS' in args.arch:
+    # VOT and AdaFree
+    if args.dataset.startswith('VOT'):
         eao = eao_vot(tracker, model, model_config)
         print("penalty_k: {0}, scale_lr: {1}, window_influence: {2}, small_sz: {3}, big_sz: {4}, ratio: {6}, eao: {5}".format(penalty_k, scale_lr, window_influence, small_sz, big_sz, eao, ratio))
         reporter(EAO=eao)
 
-    # OTB and SiamFCOS
-    if args.dataset.startswith('OTB') and 'FCOS' in args.arch:
+    # OTB and AdaFree
+    if args.dataset.startswith('OTB'):
         auc = auc_otb(tracker, model, model_config)
         print("penalty_k: {0}, scale_lr: {1}, window_influence: {2}, small_sz: {3}, big_sz: {4}, ratio: {6}, eao: {5}".format(penalty_k, scale_lr, window_influence, small_sz, big_sz, auc.item(), ratio))
         reporter(AUC=auc)
 
-
-    # GOT10KVAL and SiamFCOS
-    if args.dataset.startswith('GOT10K') and 'FCOS' in args.arch:
-        auc = auc_got10k(tracker, model, model_config)
-        print("penalty_k: {0}, scale_lr: {1}, window_influence: {2}, small_sz: {3}, big_sz: {4}, ratio: {6}, eao: {5}".format( penalty_k, scale_lr, window_influence, small_sz, big_sz, auc.item(), ratio))
-        reporter(AUC=auc)
-    # VOT and SiamRPN
-    if args.dataset.startswith('VOT') and 'SiamRPN' in args.arch:
-        eao = eao_vot_rpn(tracker, model, model_config)
-        print("penalty_k: {0}, scale_lr: {1}, window_influence: {2}, small_sz: {3}, big_sz: {4}, eao: {5}".format(penalty_k, scale_lr, window_influence, small_sz, big_sz, eao))
-        reporter(EAO=eao)
-
-    # VISDRONE and SiamFC
-    if args.dataset.startswith('VIS') and 'SiamFC' in args.arch:
-        auc = auc_visdrone(tracker, model, model_config)
-        print("scale_step: {0}, scale_lr: {1}, scale_penalty: {2}, window_influence: {3}, auc: {4}".format(scale_step, scale_lr, scale_penalty, w_influence, auc.item()))
-        reporter(AUC=auc)
 
 
 if __name__ == "__main__":
@@ -149,18 +95,8 @@ if __name__ == "__main__":
     ray.init(num_gpus=args.gpu_nums, num_cpus=args.gpu_nums * 8, redirect_output=True, object_store_memory=50000000000)
     tune.register_trainable("fitness", fitness)
 
-    # define search space for SiamFC or SiamRPN
-    if 'SiamFC' in args.arch and 'FCOS' not in args.arch:
+    if 'AdaFree' in args.arch:
         params = {
-            "scale_step": hp.quniform('scale_step', 1.0, 1.15, 0.0001),
-            "scale_penalty": hp.quniform('scale_penalty', 0.95, 1.0, 0.0001),
-            "w_influence": hp.quniform('w_influence', 0.05, 0.7, 0.0001),
-            "scale_lr": hp.quniform("scale_lr", 0.15, 0.7, 0.0001),
-        }
-
-    if 'SiamRPN' in args.arch or 'FCOS' in args.arch:
-        params = {
-                #"penalty_k": hp.quniform('penalty_k', 0.001, 0.6, 0.001),
                 "penalty_k": hp.quniform('penalty_k', 0.001, 0.6, 0.001),
                 "scale_lr": hp.quniform('scale_lr', 0.1, 0.8, 0.001),
                 "window_influence": hp.quniform('window_influence', 0.05, 0.65, 0.001),
@@ -168,6 +104,11 @@ if __name__ == "__main__":
                 "big_sz": hp.choice("big_sz", [271, 287]),
                 "ratio": hp.quniform('ratio', 0.5, 1, 0.01),
                 }
+    if 'VOT' not in args.dataset:
+        params['ratio'] = hp.choice("ratio", [1]) 
+ 
+    print('tuning range: ')
+    pprint(params)    
 
     tune_spec = {
         "zp_tune": {
