@@ -21,7 +21,7 @@ class AdaFree_(nn.Module):
         # self.bbox_tower = None
         self.neck = None
         self.search_size = 255
-        self.score_size = 11
+        self.score_size = 25
         self.batch = 32 if self.training else 1
 
         self.grids()
