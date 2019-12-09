@@ -52,7 +52,7 @@ ADAFREE:
     RGBTSPLIT: None  # None for main channel, 'RGB' and 'T' for RGBT
   TUNE:    # TUNE model is same as TRAIN.MODEL
     ISTRUE: False  # whether to tune
-    DATA: 'VOT2018'
+    DATA: 'VOT2019'
     METHOD: 'TPE'
     RGBTSPLT: None
   DATASET:
