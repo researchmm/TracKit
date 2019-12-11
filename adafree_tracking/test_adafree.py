@@ -134,8 +134,7 @@ def main():
     info.arch = args.arch
     info.dataset = args.dataset
     info.epoch_test = args.epoch_test
-    #info.align = True if 'VOT' in args.dataset else False
-    info.align = False
+    info.align = True if 'VOT' in args.dataset else False
 
     # prepare model
     net = models.__dict__[args.arch](align=info.align)
