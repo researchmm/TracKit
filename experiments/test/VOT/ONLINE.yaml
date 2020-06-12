@@ -1,0 +1,70 @@
+## BASE:
+# Patch sampling parameters
+image_sample_size: 14 * 16  # Maximum image sample size
+search_area_scale: 4                    # Scale relative to target size
+vot_anno_conversion_type: 'preserve_area'
+use_gpu: True
+debug: 0
+
+update_classifier: True
+net_opt_iter: 25
+net_opt_update_iter: 3
+net_opt_hn_iter: 3
+
+
+# Training parameters
+sample_memory_size: 250              # Memory size
+train_skipping: 10                   # How often to run training (every n-th frame)
+init_samples_minimum_weight: 0.0
+
+# Windowing
+window_output: True                  # Perform windowing of output scores
+
+# Detection parameters
+scale_factors: torch.ones(1)        # What scales to use for localization (only one scale if IoUNet is used)
+score_upsample_factor: 1            # How much Fourier upsampling to use
+
+
+# Learning parameters for each feature type
+learning_rate: 0.0075           # Learning rate
+use_augmentation: True              # Whether to use augmentation for this feature
+
+
+
+## DATA:
+# Init data augmentation parameters
+augmentation:
+  fliplr: True
+  rotate: [5, -5, 10, -10, 20, -20, 30, -30, 45,-45, -60, 60]
+  blur: '[(2, 0.2), (0.2, 2), (3,1), (1, 3), (2, 2)]'
+  relativeshift: '[(0.6, 0.6), (-0.6, 0.6), (0.6, -0.6), (-0.6,-0.6)]'
+  dropout: '(7, 0.2)'
+
+augmentation_expansion_factor: 2    # How much to expand sample when doing augmentation
+random_shift_factor: 1 / 3          # How much random shift to do on each augmented sample
+
+
+
+##REFINE:
+# Advanced localization parameters
+use_iou_net: False
+advanced_localization: True         # Use this or not
+target_not_found_threshold: 0.0      # Absolute score threshold to detect target missing
+distractor_threshold: 100           # Relative threshold to find distractors
+hard_negative_threshold: 0.45        # Relative threshold to find hard negative samples
+target_neighborhood_scale: 2.2      # Target neighborhood to remove
+dispalcement_scale: 0.7             # Dispacement to consider for distractors
+hard_negative_learning_rate: 0.02   # Learning rate if hard negative detected
+update_scale_when_uncertain: True   # Update scale or not if distractor is close
+
+# IoUNet parameters
+iounet_augmentation: False      # Use the augmented samples to compute the modulation vector
+iounet_use_log_scale: True
+iounet_k: 3                     # Top-k average to estimate final box
+num_init_random_boxes: 9        # Num extra random boxes in addition to the classifier prediction
+box_jitter_pos: 0.1             # How much to jitter the translation for random boxes
+box_jitter_sz: 0.5              # How much to jitter the scale for random boxes
+maximal_aspect_ratio: 6         # Limit on the aspect ratio
+box_refinement_iter: 5          # Number of iterations for refining the boxes
+box_refinement_step_length: 1   # Gradient step length in the bounding box refinement
+box_refinement_step_decay: 1    # Multiplicative step length decay (1 means no decay)

@@ -1,0 +1,36 @@
+TEST:
+  VOT2018:
+    penalty_k: 0.021
+    lr: 0.730
+    window_influence: 0.321
+    small_sz: 255
+    big_sz: 271
+    ratio: 0.93
+  VOT2019:
+    penalty_k: 0.062
+    lr: 0.765
+    window_influence: 0.380
+    small_sz: 255
+    big_sz: 271
+    ratio: 0.94
+  VOT2018ON:
+    penalty_k: 0.187
+    lr: 0.800
+    window_influence: 0.640
+    small_sz: 271
+    big_sz: 287
+    online_ratio: 0.5
+  VOT2019ON:
+    penalty_k: 0.06
+    lr: 0.644
+    window_influence: 0.484
+    small_sz: 255
+    big_sz: 287
+    online_ratio: 0.7
+  VOT2020:   # ocean-online/oceanplus all (you may tune these params on VOT2020 to get better results)
+    penalty_k: 0.06
+    lr: 0.644
+    window_influence: 0.484
+    small_sz: 255
+    big_sz: 287
+    online_ratio: 0.7

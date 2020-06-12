@@ -1,0 +1,6 @@
+tqdm
+numpy
+glob
+opencv-python
+colorama
+numba
