@@ -1,4 +1,4 @@
-# TrackSeg
+# TracKit
 Implementation of our published tracking and segmentation work, based on **Pytorch** and **TensorRT**.
 
 :dart: Hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
