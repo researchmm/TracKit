@@ -33,7 +33,7 @@ Implementation of our published tracking and segmentation work, based on **Pytor
 |Offline | 0.444 | 0.436 |
 |Online  | 0.500 | 0.484 |
 
-<div align="center">
+<div align="left">
   <img src="demo/oceanplus.gif" width="600px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
