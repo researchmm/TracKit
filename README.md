@@ -1,4 +1,4 @@
-# TrackSeg
+# TracKit
 Implementation of our published tracking and segmentation work, based on **Pytorch** and **TensorRT**.
 
 :dart: Hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
@@ -22,7 +22,7 @@ Implementation of our published tracking and segmentation work, based on **Pytor
 
 ## Trackers
 ### OceanPlus
-**[[Paper]]() [[Raw Results]](https://drive.google.com/drive/folders/1Wi_9fvPhfBtuDPteNo75iqiRs4-bfmgI?usp=sharing) [[Training and Testing]](https://github.com/JudasDie/TrackSeg/tree/master/lib/tutorial/OceanPlus) [[Demo]]()** <br/>
+**[[Paper]]() [[Raw Results]](https://drive.google.com/drive/folders/1Wi_9fvPhfBtuDPteNo75iqiRs4-bfmgI?usp=sharing) [[Training and Testing]](https://github.com/JudasDie/TrackSeg/tree/master/lib/tutorial/OceanPlus) [[Demo]](https://www.youtube.com/watch?v=ueNqnVkl37c)** <br/>
 
 - **Advantages:** only several lines of code (core part) on Ocean, easy to implement.
 
@@ -33,7 +33,11 @@ Implementation of our published tracking and segmentation work, based on **Pytor
 |Offline | 0.444 | 0.436 |
 |Online  | 0.500 | 0.484 |
 
-[![oceanplusDemo](https://res.cloudinary.com/marcomontalbano/image/upload/v1591947184/video_to_markdown/images/youtube--ueNqnVkl37c-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=ueNqnVkl37c "oceanplusDemo")
+<div align="left">
+  <img src="demo/oceanplus.gif" width="600px" />
+  <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
+</div>
+
 
 ### Ocean
 **[[Paper]]() [[Raw Results]](https://drive.google.com/file/d/1vDp4MIkWzLVOhZ-Yt2Zdq8Z_Z0rz6y0R/view?usp=sharing) [[Training and Testing]](https://github.com/JudasDie/TrackSeg/tree/master/lib/tutorial/Ocean) [[Demo]]()** <br/>
@@ -88,8 +92,8 @@ year = {2019}
 ```
 
 ## Contributors
-- **[Zhipeng Zhang]()**
-- **[Houwen Peng]()**
+- **[Zhipeng Zhang](https://github.com/JudasDie)**
+- **[Houwen Peng](https://houwenpeng.com/)**
 
 
 
