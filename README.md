@@ -1,11 +1,15 @@
-# TracKit
-Implementation of our published tracking and segmentation work, based on **Pytorch** and **TensorRT**.
 
 :dart: Hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
 
 :dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
 
+# TracKit
+
+## This is a toolkit for video object tracking and segmentation.
+
 ## News
+:boom: Implementation of our tracking and segmentation work, based on **Pytorch** and **TensorRT**.
+
 :boom:  The initial version is released, including [Ocean]() and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
 
 :boom: We provide a TensorRT implementation, running at 1.5~2.5 times faster than pytorch version (e.g. 149fps/68fps for video `twinnings`, see [details]()).
