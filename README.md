@@ -1,8 +1,6 @@
 
 :dart: Hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
 
-:dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
-
 # TracKit
 
 ### This is a toolkit for video object tracking and segmentation.
@@ -82,6 +80,8 @@ $TrackSeg
 
 ```
 Please follow **[[Training and Testing]]()** of each model to use our trackers. If you have any questions about the code or want to discuss further, please feel free to contact `zhangzhipeng2017@ia.ac.cn`.
+
+:dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
 
 ## Citation
 If any part of our paper or code helps your work, please generouslly cite our work:
