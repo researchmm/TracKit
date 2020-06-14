@@ -5,7 +5,7 @@
 
 # TracKit
 
-## This is a toolkit for video object tracking and segmentation.
+### This is a toolkit for video object tracking and segmentation.
 
 ## News
 :boom: Implementation of our tracking and segmentation work, based on **Pytorch** and **TensorRT**.
