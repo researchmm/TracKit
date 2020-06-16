@@ -96,6 +96,11 @@ year = {2019}
 } 
 ```
 
+## References
+```
+[1] Bhat G, Danelljan M, et al. Learning discriminative model prediction for tracking. ICCV2019.
+[2] Chen, Kai and Wang, et.al. MMDetection: Open MMLab Detection Toolbox and Benchmark.
+```
 ## Contributors
 - **[Zhipeng Zhang](https://github.com/JudasDie)**
 - **[Houwen Peng](https://houwenpeng.com/)**
