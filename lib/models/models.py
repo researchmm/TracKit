@@ -7,8 +7,8 @@ import math
 import torch
 import torch.nn as nn
 from .ocean import Ocean_
-from .oceanplus import OceanPlus_
-from .oceanplusTRT import OceanPlusTRT_
+#from .oceanplus import OceanPlus_
+#from .oceanplusTRT import OceanPlusTRT_
 from .oceanTRT import OceanTRT_
 from .siamfc import SiamFC_
 from .connect import box_tower, AdjustLayer, AlignHead, Corr_Up, MultiDiCorr, OceanCorr
@@ -49,24 +49,24 @@ class OceanTRT(OceanTRT_):
         self.connect_model2 = OceanCorr()
 
 
-class OceanPlus(OceanPlus_):
-    def __init__(self, online=False):
-        super(OceanPlus, self).__init__()
-        self.features = ResNet50(used_layers=[3], online=online)   # in param
-        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
-        self.connect_model = box_tower(inchannels=256, outchannels=256, towernum=4)
-        self.mask_model = MultiRefine(addCorr=True, mulOradd='add')
+#class OceanPlus(OceanPlus_):
+#    def __init__(self, online=False):
+#        super(OceanPlus, self).__init__()
+#        self.features = ResNet50(used_layers=[3], online=online)   # in param
+#        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
+#        self.connect_model = box_tower(inchannels=256, outchannels=256, towernum=4)
+#        self.mask_model = MultiRefine(addCorr=True, mulOradd='add')
 
 
-class OceanPlusTRT(OceanPlusTRT_):
-    def __init__(self, online=False):
-        super(OceanPlusTRT, self).__init__()
-        self.features = ResNet50(used_layers=[3], online=online)  # in param
-        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
-        self.connect_model0 = MultiDiCorr(inchannels=256, outchannels=256)
-        self.connect_model1 = box_tower(inchannels=256, outchannels=256, towernum=4)
-        self.connect_model2 = OceanCorr()
-        self.mask_model = MultiRefineTRT(addCorr=True, mulOradd='add')
+#class OceanPlusTRT(OceanPlusTRT_):
+#    def __init__(self, online=False):
+#        super(OceanPlusTRT, self).__init__()
+#        self.features = ResNet50(used_layers=[3], online=online)  # in param
+#        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
+#        self.connect_model0 = MultiDiCorr(inchannels=256, outchannels=256)
+#        self.connect_model1 = box_tower(inchannels=256, outchannels=256, towernum=4)
+#        self.connect_model2 = OceanCorr()
+#        self.mask_model = MultiRefineTRT(addCorr=True, mulOradd='add')
 
 
 # ------------------------------

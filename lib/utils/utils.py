@@ -1145,7 +1145,7 @@ def _build_lr_scheduler(optimizer, config, epochs=50, last_epoch=-1):
 
 
 def _build_warm_up_scheduler(optimizer, cfg, epochs=50, last_epoch=-1, modelFLAG='OCEAN'):
-    cfg = cfg[modelFLAG]
+    #cfg = cfg[modelFLAG]
     warmup_epoch = cfg.TRAIN.WARMUP.EPOCH
     sc1 = _build_lr_scheduler(optimizer, cfg.TRAIN.WARMUP,
                               warmup_epoch, last_epoch)

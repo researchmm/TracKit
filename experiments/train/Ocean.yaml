@@ -1,6 +1,5 @@
 OCEAN:
-#  GPUS: '0,1,2,3,4,5,6,7'
-  GPUS: '0'
+  GPUS: '0,1,2,3,4,5,6,7'
   PRINT_FREQ: 10
   WORKERS: 32
   OUTPUT_DIR: 'logs'   # log file

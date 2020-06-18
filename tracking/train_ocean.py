@@ -128,8 +128,7 @@ def build_opt_lr(cfg, model, current_epoch=0):
         trainable_params += [{'params': model.align_head.parameters(),
                             'lr': cfg.OCEAN.TRAIN.BASE_LR}]
     except:
-        trainable_params += [{'params': model.align_head.parameters(),
-                              'lr': cfg.OCEAN.TRAIN.BASE_LR}]
+        pass
 
     # print trainable parameter (first check)
     print('==========first check trainable==========')
