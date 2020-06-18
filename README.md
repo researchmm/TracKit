@@ -1,5 +1,5 @@
 
-:dart: Hiring research interns for visual tracking and neural architecture search projects: houwen.peng@microsoft.com
+### Hiring research interns for visual tracking, segmentation and neural architecture search projects: houwen.peng@microsoft.com
 
 # TracKit
 
