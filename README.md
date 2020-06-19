@@ -95,10 +95,18 @@ month = {June},
 year = {2019}
 } 
 
-@article{zhangOcean,
+@InProceedings{TVOS_2020_CVPR,
+author = {Zhang, Yizhuo and Wu, Zhirong and Peng, Houwen and Lin, Stephen},
+title = {A Transductive Approach for Video Object Segmentation},
+booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2020}
+}
+
+@article{Ocean_2020,
   title={Ocean: Object-aware Anchor-free Tracking},
   author={Zhipeng Zhang, Houwen Peng, Jianlong Fu, Bing Li, Weiming Hu},
-  journal={arXiv preprint arXiv:2006.10721
+  journal={arXiv preprint arXiv:2006.10721},
   year={2020}
 }
 ```
