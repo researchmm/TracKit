@@ -79,7 +79,9 @@ $TrackSeg
      |—— ants1...
 |—— ...
 
-```
+
+## How To Start
+
 Please follow **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial)** of each model to use our trackers. 
 
 :dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
