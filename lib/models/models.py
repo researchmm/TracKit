@@ -13,7 +13,7 @@ from .oceanTRT import OceanTRT_
 from .siamfc import SiamFC_
 from .connect import box_tower, AdjustLayer, AlignHead, Corr_Up, MultiDiCorr, OceanCorr
 from .backbones import ResNet50, ResNet22W
-from .mask import MultiRefine, MultiRefineTRT
+#from .mask import MultiRefine, MultiRefineTRT
 from .modules import MultiFeatureBase
 
 import os
