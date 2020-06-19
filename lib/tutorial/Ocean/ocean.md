@@ -8,7 +8,7 @@ We assume the root path is $TracKit, e.g. `/home/zpzhang/TracKit`
 cd $TracKit/lib/tutorial
 bash install.sh $conda_path TracKit
 cd $TracKit
-conda activate TrackSeg
+conda activate TracKit
 python setup.py develop
 ```
 `$conda_path` denotes your anaconda path, e.g. `/home/zpzhang/anaconda3`
