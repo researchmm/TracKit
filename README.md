@@ -94,6 +94,13 @@ booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVP
 month = {June},
 year = {2019}
 } 
+
+@article{zhangOcean,
+  title={Ocean: Object-aware Anchor-free Tracking},
+  author={Zhipeng Zhang, Houwen Peng, Jianlong Fu, Bing Li, Weiming Hu},
+  journal={arXiv preprint arXiv:2006.10721
+  year={2020}
+}
 ```
 
 ## References
