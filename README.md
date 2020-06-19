@@ -53,6 +53,10 @@ SiamDW is one of the pioneering work using deep backbone networks for Siamese tr
 
 <img src="https://github.com/penghouwen/TracKit/blob/master/demo/siamdw_overview.jpg" height="250" alt="SiamDW"/><br/>
 
+## How To Start
+
+Please follow **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial)** of each model to use our trackers. 
+
 
 ## Structure
 - `experiments:` training and testing settings
@@ -79,10 +83,7 @@ $TrackSeg
      |—— ants1...
 |—— ...
 
-
-## How To Start
-
-Please follow **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial)** of each model to use our trackers. 
+```
 
 :dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
 
