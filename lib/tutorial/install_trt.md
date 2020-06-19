@@ -1,4 +1,6 @@
 # Install TensorRT
+We install TensorRT on RTX2080Ti with CUDA10.0. If you fail to install it, please use pytorch version.
+
 1) install pycuda
 ```
 export C_INCLUDE_PATH=/usr/local/cuda-10.0/include/:${C_INCLUDE_PATH}
@@ -51,5 +53,7 @@ import torch2trt
 
 
 ### Note
- - If you met the error `PermissionError: [Errno 13] Permission denied: '/tmp/torch_extensions/_prroi_pooling/lock'`, please remove `/tmp/torch_extensions/ _prroi_pooling` and rerun the tracker. If other user in your machine have compiled prroi pooling before, this may happens. Besides, if you have compiled pproi_pooling before, please remove `/tmp/torch_extensions/`. Otherwise, you may fail to compile in the new conda environment.
 - If you met the error `ImportError: libcudart.so.10.0: cannot open shared object file: No such file or directory`, please run `sudo cp /usr/local/cuda-10.0/lib64/libcudart.so.10.0 /usr/local/lib/libcudart.so.10.0 && sudo ldconfig`.
+
+ - If you met the error `PermissionError: [Errno 13] Permission denied: '/tmp/torch_extensions/_prroi_pooling/lock'`, please remove `/tmp/torch_extensions/ _prroi_pooling` and rerun the tracker. If other user in your machine have compiled prroi pooling before, this may happens. Besides, if you have compiled pproi_pooling before, please remove `/tmp/torch_extensions/`. Otherwise, you may fail to compile in the new conda environment.
+
