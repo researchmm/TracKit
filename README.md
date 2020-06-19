@@ -1,5 +1,5 @@
 
-### Hiring research interns for visual tracking, segmentation and neural architecture search projects: houwen.peng@microsoft.com
+Hiring research interns for visual tracking, segmentation and neural architecture search projects: houwen.peng@microsoft.com
 
 # TracKit
 
@@ -46,9 +46,13 @@ SiamDW is one of the pioneering work using deep backbone networks for Siamese tr
 <img src="https://github.com/penghouwen/TracKit/blob/master/demo/siamdw_overview.jpg" height="250" alt="SiamDW"/><br/>
 
 ## How To Start
+- Tutorial for **Ocean**
 
-Please follow **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial)** of each model to use our trackers. 
+  Follow Ocean **[[Training and Testing]](https://github.com/researchmm/TracKit/blob/master/lib/tutorial/Ocean/ocean.md)** tutorial 
 
+- Tutorial for **SiamDW**
+
+  Follow SiamDW **[[Training and Testing]](https://github.com/researchmm/TracKit/blob/master/lib/tutorial/SiamDW/siamdw.md)** tutorial 
 
 ## Structure
 - `experiments:` training and testing settings
