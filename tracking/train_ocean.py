@@ -196,16 +196,14 @@ def main():
 
     if config.OCEAN.TRAIN.ALIGN:
         print('====> train object-aware version <====')
-        model = models.__dict__[config.OCEAN.TRAIN.MODEL](align=True)  # build model
+        model = models.__dict__[config.OCEAN.TRAIN.MODEL](align=True).cuda()  # build model
     else:
         print('====> Default: train without object-aware, also prepare for OceanPlus <====')
-        model = models.__dict__[config.OCEAN.TRAIN.MODEL](align=False)  # build model
+        model = models.__dict__[config.OCEAN.TRAIN.MODEL](align=False).cuda()  # build model
 
-    # print(model)
-    try:
-        model = load_pretrain(model, './pretrain/{0}'.format(config.OCEAN.TRAIN.PRETRAIN))    # load pretrain
-    except:
-        print('=============train from scrach================')
+    print(model)
+
+    model = load_pretrain(model, './pretrain/{0}'.format(config.OCEAN.TRAIN.PRETRAIN))    # load pretrain
 
     # get optimizer
     if not config.OCEAN.TRAIN.START_EPOCH == config.OCEAN.TRAIN.UNFIX_EPOCH:
@@ -218,7 +216,6 @@ def main():
     trainable_params = check_trainable(model, logger)           # print trainable params info
 
     if config.OCEAN.TRAIN.RESUME and config.OCEAN.TRAIN.START_EPOCH != 0:   # resume
-        model.features.unfix((config.OCEAN.TRAIN.START_EPOCH - 1) / config.OCEAN.TRAIN.END_EPOCH)
         model, optimizer, args.start_epoch, arch = restore_from(model, optimizer, config.OCEAN.TRAIN.RESUME)
 
     # parallel
