@@ -6,13 +6,13 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 ### This is a toolkit for video object tracking and segmentation.
 
 ## News
-:boom: Implementation of our tracking and segmentation work, based on **Pytorch** and **TensorRT**.
+:boom: Our paper [Ocean](https://arxiv.org/abs/2006.10721) has been accepted by ECCV2020 (Learning Object-aware Anchor-free Networks for Real-time Object Tracking). 
 
-:boom:  The initial version is released, including [Ocean](https://arxiv.org/abs/2006.10721) and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
+:boom:  The initial version is released, including [Ocean(ECCV2020)](https://arxiv.org/abs/2006.10721) and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
 
 :boom: We provide a TensorRT implementation, running at 1.5~2.5 times faster than pytorch version (e.g. 149fps/68fps for video `twinnings`, see [details](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/)).
 
-**Note:** We focus on providing an easy-to-follow code for research on video object tracking and segmentation task. The code will be continuously optimized. You may pull requests to help us build this repo. 
+**Note:** We focus on providing an easy-to-follow code based on **Pytorch** and **TensorRT** for research on video object tracking and segmentation task. The code will be continuously optimized. You may pull requests to help us build this repo. 
 
 
 ## Trackers
