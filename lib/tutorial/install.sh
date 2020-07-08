@@ -83,7 +83,9 @@ echo ""
 echo ""
 echo "****************** Installing jpeg4py python wrapper ******************"
 pip install jpeg4py 
-
+pip install mpi4py
+pip install ray==0.6.1
+pip install hyperopt
 
 
 echo "****************** Installation complete! ******************"
