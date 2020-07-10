@@ -27,13 +27,13 @@ We provide some raw scripts used in our daily research. Some of them may be usef
 
 Official implementation of the Ocean tracker. Ocean proposes a general anchor-free based tracking framework. It includes a pixel-based anchor-free regression network to solve the weak rectification problem of RPN, and an object-aware classification network to learn robust target-related representation. Moreover, we introduce an effective multi-scale feature combination module to replace heavy result fusion mechanism in recent Siamese trackers. This work also serves as the baseline model of OceanPlus. An additional **TensorRT** toy demo is provided in this repo.
 
-<div align="center">
+<div align="left">
   <img src="https://github.com/penghouwen/TracKit/blob/master/demo/Ocean_overview.jpg" height="300" alt="Ocean"/><br/>
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
 
 
-<div align="center">
+<div align="left">
   <img src="demo/ocean1.gif" width="800px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
