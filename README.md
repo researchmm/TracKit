@@ -5,6 +5,11 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 
 ### This is a toolkit for video object tracking and segmentation.
 
+<div align="left">
+  <img src="demo/ocean1.gif" width="800px" />
+  <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
+</div>
+
 ## News
 :boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by ECCV2020 (Learning Object-aware Anchor-free Networks for Real-time Object Tracking). 
 
@@ -31,13 +36,6 @@ Official implementation of the Ocean tracker. Ocean proposes a general anchor-fr
   <img src="https://github.com/penghouwen/TracKit/blob/master/demo/Ocean_overview.jpg" height="300" alt="Ocean"/><br/>
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
-
-
-<div align="left">
-  <img src="demo/ocean1.gif" width="800px" />
-  <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
-</div>
-
 
 ### OceanPlus
 Paper and Code will be released soon.
