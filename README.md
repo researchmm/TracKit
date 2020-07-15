@@ -11,8 +11,6 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 </div>
 
 ## News
-:boom: [Comparision:](https://github.com/JudasDie/Comparision) We summarize the performances of **97 trackers** (published in CVPR/ICCV/ECCV/AAAI/NIPS) on **15 tracking benchmarks** (OTB13/15, VOT16-20, LASOT, GOT10K, TrackingNet, UAV123, NFS, TC128, VOT2018LT, OxUvA).  The [repo.](https://github.com/JudasDie/Comparision) is designed to easily compare different trackers, especially when writing papers (performance table/figures). We will continuously update that repo., and we welcome your PR.
-
 :boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by ECCV2020 (Learning Object-aware Anchor-free Networks for Real-time Object Tracking). 
 
 :boom:  The initial version is released, including [Ocean(ECCV2020)](https://arxiv.org/pdf/2006.10721v2.pdf) and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
