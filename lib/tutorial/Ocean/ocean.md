@@ -61,7 +61,7 @@ python tracking/test_ocean.py --arch Ocean --resume snapshot/OceanV.pth --datase
 :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
 ## Training
 #### prepare data
-- Please download training data from [here](https://drive.google.com/drive/folders/1ehjVhg6ewdWSWt709zd1TkjWF7UJlQlq?usp=sharing), and then put them in `$TracKit/data`
+- Please download training data from [GoogleDrive](https://drive.google.com/drive/folders/1ehjVhg6ewdWSWt709zd1TkjWF7UJlQlq?usp=sharing) or [BaiduDrive(urxq)](https://pan.baidu.com/s/1jGPEJieir5OWqCmibV3yrQ), and then put them in `$TracKit/data`
 - You could also refer to scripts in `$TracKit/lib/dataset/crop` to process your custom data. 
 
 #### prepare pretrained model
