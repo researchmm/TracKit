@@ -63,6 +63,8 @@ python tracking/test_ocean.py --arch Ocean --resume snapshot/OceanV.pth --datase
 #### prepare data
 - Please download training data from [GoogleDrive](https://drive.google.com/drive/folders/1ehjVhg6ewdWSWt709zd1TkjWF7UJlQlq?usp=sharing) or [BaiduDrive(urxq)](https://pan.baidu.com/s/1jGPEJieir5OWqCmibV3yrQ), and then put them in `$TracKit/data`
 - You could also refer to scripts in `$TracKit/lib/dataset/crop` to process your custom data. 
+- For splited files in BaiduDrive, please use `cat got10k.tar.*  | tar -zxv` to merge and unzip.
+
 
 #### prepare pretrained model
 Please download the pretrained model on ImageNet [here](https://drive.google.com/open?id=1Pwe5NRdOoGiTYlnrOZdL-3S494RkbPQe), and then put it in `$TracKit/pretrain`.
