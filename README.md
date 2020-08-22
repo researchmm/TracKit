@@ -11,7 +11,7 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 </div>
 
 ## News
-:boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by ECCV2020 (Learning Object-aware Anchor-free Networks for Real-time Object Tracking). 
+:boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by ECCV2020 (https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3872_ECCV_2020_paper.php). 
 
 :boom:  The initial version is released, including [Ocean(ECCV2020)](https://arxiv.org/pdf/2006.10721v2.pdf) and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
 
