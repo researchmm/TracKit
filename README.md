@@ -11,7 +11,9 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 </div>
 
 ## News
-:boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by ECCV2020 (https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3872_ECCV_2020_paper.php). 
+:boom: We achieves the runner-ups for both [VOT2020ST (short-term) and RT(real-time)](http://data.votchallenge.net/vot2020/presentations/vot2020-st.pdf). The variants of Ocean take **2nd/3rd/5th** places of VOT2020RT. The [SiamDW-T](https://github.com/researchmm/VOT2019) submitted to VOT2019 achieves **1st** of [VOT2020RGBT](http://data.votchallenge.net/vot2020/presentations/vot2020-rgbt.pdf) (submitted by VOT committee).  
+
+:boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by [ECCV2020](https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3872_ECCV_2020_paper.php). 
 
 :boom:  The initial version is released, including [Ocean(ECCV2020)](https://arxiv.org/pdf/2006.10721v2.pdf) and [SiamDW(CVPR2019)](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf).
 
