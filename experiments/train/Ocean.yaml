@@ -8,7 +8,7 @@ OCEAN:
   TRAIN:
     ISTRUE: True  # whether to test
     MODEL: "Ocean"
-    ALIGN: True      # object aware branch
+    ALIGN: False      # object aware branch
     START_EPOCH: 0
     END_EPOCH: 50
     TEMPLATE_SIZE: 127
