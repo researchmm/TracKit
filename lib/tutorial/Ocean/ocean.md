@@ -77,4 +77,4 @@ In root path $TracKit,
 ```
 python tracking/onekey.py
 ```
-This script integrates **train**, **epoch test** and **tune**. It is suggested to run them one by one when you are not familiar with our whole framework (modify the key `ISTRUE` in `$TracKit/experiments/train/Ocean.yaml`). When you know this framework well, simply run this one-key script.
+This script integrates **train**, **epoch test** and **tune**. It is suggested to run them one by one when you are not familiar with our whole framework (modify the key `ISTRUE` in `$TracKit/experiments/train/Ocean.yaml`). When you know this framework well, simply run this one-key script. VOT2018 is much more sensitive than other datasets, thus I would suggest you tune 4000-5000 groups for it. For other datasets like VOT2019/OTB, 1500-2000 may be enough. For truely large dataset like LASOT, I would suggest you tune with grid search (only selecting epoch and tuning `window_influence` is enough for LASOT in my experience.)
