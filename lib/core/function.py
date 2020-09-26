@@ -42,10 +42,10 @@ def ocean_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_dict
 
         if cls_loss_align is not None:
             cls_loss_align = torch.mean(cls_loss_align)
-            loss = cls_loss_ori + cls_loss_align + 1.2 * reg_loss
+            loss = cls_loss_ori + cls_loss_align + reg_loss
         else:
             cls_loss_align = 0
-            loss = cls_loss_ori +  1.2 * reg_loss
+            loss = cls_loss_ori + reg_loss
 
         loss = torch.mean(loss)
 
