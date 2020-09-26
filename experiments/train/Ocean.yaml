@@ -75,25 +75,25 @@ OCEAN:
       PATH: './data/vid/crop511'
       ANNOTATION: './data/vid/train.json'
       RANGE: 100
-      USE: 100000
+      USE: 110000
     YTB:
       PATH: './data/y2b/crop511'
       ANNOTATION: './data/y2b/train.json'
       RANGE: 3
-      USE: 200000
+      USE: 210000
     GOT10K:
       PATH: './data/got10k/crop511'
       ANNOTATION: './data/got10k/all.json'
       RANGE: 100
-      USE: 200000
+      USE: 160000
     DET:
       PATH: './data/det/crop511'
       ANNOTATION: './data/det/train.json'
       RANGE: 100
-      USE: 50000
+      USE: 60000
     COCO:
       PATH: "./data/coco/crop511"
       ANNOTATION: "./data/coco/train2017.json"
       RANGE: 1
-      USE: 50000
+      USE: 60000
 
