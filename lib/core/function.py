@@ -42,8 +42,8 @@ def ocean_train(train_loader, model,  optimizer, epoch, cur_lr, cfg, writer_dict
 
         if cls_loss_align is not None:
             cls_loss_align = torch.mean(cls_loss_align)
-            loss = cls_loss_ori + cls_loss_align + reg_loss
-        else:
+            loss = cls_loss_ori + cls_loss_align + reg_loss   # smaller reg loss is better for stable training (compared to 1.2 in SiamRPN seriese)
+        else:                                                 # I would suggest the readers to perform ablation on the loss trade-off weights when building a new module
             cls_loss_align = 0
             loss = cls_loss_ori + reg_loss
 
