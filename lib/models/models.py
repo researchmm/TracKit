@@ -89,6 +89,8 @@ class OninleRes18(MultiFeatureBase):
     args:
         output_layers: List of layers to output.
         net_path: Relative or absolute net path (default should be fine).
+
+    modified from ATOM/DiMP
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

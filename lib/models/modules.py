@@ -49,6 +49,9 @@ def down_spatial(in_planes, out_planes):
 # -------------------------------
 
 class Bottleneck(nn.Module):
+    """
+    modified from SiamRPN++
+    """
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None, dilation=1):
@@ -159,6 +162,10 @@ class Bottleneck_BIG_CI(nn.Module):
 # Modified ResNet
 # ---------------------
 class ResNet_plus2(nn.Module):
+    """
+    modified from SiamRPN++
+    """
+
     def __init__(self, block, layers, used_layers, online=False):
         self.inplanes = 64
         super(ResNet_plus2, self).__init__()
@@ -336,8 +343,12 @@ class ResNet(nn.Module):
 # ----------------------
 # Modules used by ATOM
 # ----------------------
+
+# modified from ATOM and DiMP
+
 class FeatureBase:
     """Base feature class.
+
     args:
         fparams: Feature specific parameters.
         pool_stride: Amount of average pooling to apply do downsample the feature map.

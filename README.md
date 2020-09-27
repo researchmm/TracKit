@@ -139,6 +139,11 @@ year = {2020}
 ```
 [1] Bhat G, Danelljan M, et al. Learning discriminative model prediction for tracking. ICCV2019.
 [2] Chen, Kai and Wang, et.al. MMDetection: Open MMLab Detection Toolbox and Benchmark.
+[3] Li, B., Wu, W., Wang, Q., et.al. Siamrpn++: Evolution of siamese visual tracking with very deep networks. CVPR2019.
+[4] Dai, J., Qi, H., Xiong, Y., et.al. Deformable convolutional networks. ICCV2017.
+[5] Wang, Q., Zhang, L., et.al. Fast online object tracking and segmentation: A unifying approach. CVPR2019.
+[6] Vu, T., Jang, H., et.al. Cascade RPN: Delving into High-Quality Region Proposal Network with Adaptive Convolution. NIPS2019.
+[7] VOT python toolkit: https://github.com/StrangerZhang/pysot-toolkit 
 ```
 ## Contributors
 - **[Zhipeng Zhang](https://github.com/JudasDie)**

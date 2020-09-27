@@ -44,6 +44,9 @@ def xcorr_depthwise(x, kernel):
 
 
 class DepthwiseXCorr(nn.Module):
+    """
+    modified from SiamRPN++
+    """
     def __init__(self, in_channels, hidden, out_channels, kernel_size=3, hidden_kernel_size=5):
         super(DepthwiseXCorr, self).__init__()
         self.conv_kernel = nn.Sequential(
@@ -110,6 +113,9 @@ class OceanCorr(nn.Module):
 
 
 class AdjustLayer(nn.Module):
+    """
+    modified from SiamRPN
+    """
     def __init__(self, in_channels, out_channels):
         super(AdjustLayer, self).__init__()
         self.downsample = nn.Sequential(
@@ -190,7 +196,10 @@ class matrix(nn.Module):
 
 class AdaptiveConv(nn.Module):
     """ Adaptive Conv is built based on Deformable Conv
-    with precomputed offsets which derived from anchors"""
+    with precomputed offsets which derived from anchors
+
+    modified from Cascaded RPN
+    """
 
     def __init__(self, in_channels, out_channels):
         super(AdaptiveConv, self).__init__()

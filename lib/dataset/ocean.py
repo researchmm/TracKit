@@ -318,7 +318,7 @@ class OceanDataset(Dataset):
     # ------------------------------------
     def _augmentation(self, image, bbox, size, search=False):
         """
-        data augmentation for input pairs
+        data augmentation for input pairs (modified from SiamRPN.)
         """
         shape = image.shape
         crop_bbox = center2corner((shape[0] // 2, shape[1] // 2, size, size))
@@ -404,7 +404,7 @@ class OceanDataset(Dataset):
 
 class subData(object):
     """
-    for training with multi dataset
+    for training with multi dataset, modified from SiamRPN
     """
     def __init__(self, cfg, data_name, start):
         self.data_name = data_name
