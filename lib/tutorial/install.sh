@@ -83,8 +83,13 @@ echo ""
 echo ""
 echo "****************** Installing jpeg4py python wrapper ******************"
 pip install jpeg4py 
-pip install mpi4py
-pip install ray==0.6.1
+
+
+echo ""
+echo ""
+echo "****************** Installing ray==0.8.7 ******************"
+pip install ray==0.8.7
+pip install ray[tune]
 pip install hyperopt
 
 

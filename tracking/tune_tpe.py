@@ -13,18 +13,22 @@ from easydict import EasyDict as edict
 import ray
 from ray import tune
 from ray.tune.schedulers import AsyncHyperBandScheduler
-from ray.tune.suggest import HyperOptSearch
+#from ray.tune.suggest import HyperOptSearch
+from ray.tune.suggest.hyperopt import HyperOptSearch
 from hyperopt import hp
 from pprint import pprint
 
-parser = argparse.ArgumentParser(description='parameters for SiamFC tracker')
+parser = argparse.ArgumentParser(description='parameters for Ocean tracker')
 parser.add_argument('--arch', dest='arch', default='Ocean',
                     help='architecture of model')
 parser.add_argument('--resume', default='', type=str, required=True,
                     help='resumed model')
-parser.add_argument('--gpu_nums', default=4, type=int, help='gpu numbers')
+parser.add_argument('--cache_dir', default='./TPE_results', type=str, help='directory to store cache')
+parser.add_argument('--gpu_nums', default=8, type=int, help='gpu numbers')
+parser.add_argument('--trial_per_gpu', default=8, type=int, help='trail per gpu')
 parser.add_argument('--dataset', default='OTB2013', type=str, help='dataset')
 parser.add_argument('--align', default='True', type=str, help='align')
+parser.add_argument('--online', default=False, type=bool, help='online flag')
 
 args = parser.parse_args()
 
@@ -35,23 +39,33 @@ info = edict()
 info.arch = args.arch
 info.dataset = args.dataset
 info.epoch_test = False
-
-# create model
-info.align = True if 'VOT' in args.dataset and args.align=='True' else False
-if 'Ocean' in args.arch:
-    model = models.__dict__[args.arch](align=info.align)
-    tracker = Ocean(info)
+if args.online:
+    info.align = False
 else:
-    raise ValueError('not supported other model now')
+    info.align = True if 'VOT' in args.dataset and args.align=='True' else False
+info.online = args.online
+info.TRT = 'TRT' in args.arch
+if info.TRT:
+    info.align = False
 
-model = load_pretrain(model, args.resume)
-model.eval()
-model = model.cuda()
-print('pretrained model has been loaded')
+args.resume = os.path.abspath(args.resume)
 
 
 # fitness function
 def fitness(config, reporter):
+    # create model
+    if 'Ocean' in args.arch:
+        model = models.__dict__[args.arch](align=info.align)
+        tracker = Ocean(info)
+    else:
+        raise ValueError('not supported other model now')
+
+    model = load_pretrain(model, args.resume)
+    model.eval()
+    model = model.cuda()
+    print('pretrained model has been loaded')
+    print(os.environ['CUDA_VISIBLE_DEVICES'])
+
     if 'Ocean' in args.arch:
         penalty_k = config["penalty_k"]
         scale_lr = config["scale_lr"]
@@ -74,7 +88,6 @@ def fitness(config, reporter):
     else:
         raise ValueError('not supported model')
 
-
     # VOT and Ocean
     if args.dataset.startswith('VOT'):
         eao = eao_vot(tracker, model, model_config)
@@ -88,22 +101,22 @@ def fitness(config, reporter):
         reporter(AUC=auc)
 
 
-
 if __name__ == "__main__":
     # the resources you computer have, object_store_memory is shm
-    ray.init(num_gpus=args.gpu_nums, num_cpus=args.gpu_nums * 8, redirect_output=True, object_store_memory=50000000000)
+    #ray.init(num_gpus=args.gpu_nums, num_cpus=args.gpu_nums * 8,  object_store_memory=50000000000)
+    ray.init(num_gpus=args.gpu_nums, num_cpus=args.gpu_nums * 8,  object_store_memory=500000000)
     tune.register_trainable("fitness", fitness)
 
     if 'Ocean' in args.arch:
         params = {
-                "penalty_k": hp.quniform('penalty_k', 0.001, 0.6, 0.001),
-                "scale_lr": hp.quniform('scale_lr', 0.1, 0.8, 0.001),
-                "window_influence": hp.quniform('window_influence', 0.05, 0.65, 0.001),
+                "penalty_k": hp.quniform('penalty_k', 0.001, 0.2, 0.001),
+                "scale_lr": hp.quniform('scale_lr', 0.3, 0.8, 0.001),
+                "window_influence": hp.quniform('window_influence', 0.15, 0.65, 0.001),
                 "small_sz": hp.choice("small_sz", [255, 271]),
                 "big_sz": hp.choice("big_sz", [271, 287]),
-                "ratio": hp.quniform('ratio', 0.5, 1, 0.01),
+                "ratio": hp.quniform('ratio', 0.7, 1, 0.01),
                 }
-    if 'VOT' not in args.dataset:
+    if 'VOT' not in args.dataset or not args.align:
         params['ratio'] = hp.choice("ratio", [1]) 
  
     print('tuning range: ')
@@ -112,12 +125,12 @@ if __name__ == "__main__":
     tune_spec = {
         "zp_tune": {
             "run": "fitness",
-            "trial_resources": {
+            "resources_per_trial": {
                 "cpu": 1,  # single task cpu num
-                "gpu": 0.5,  # single task gpu num
+                "gpu": 1.0 / args.trial_per_gpu,  # single task gpu num
             },
             "num_samples": 10000,  # sample hyperparameters times
-            "local_dir": './TPE_results'
+            "local_dir": args.cache_dir
         }
     }
 
@@ -131,13 +144,16 @@ if __name__ == "__main__":
 
         scheduler = AsyncHyperBandScheduler(
             # time_attr="timesteps_total",
-            reward_attr="EAO",
+            metric='EAO',
+            mode='max',
             max_t=400,
             grace_period=20
         )
-        algo = HyperOptSearch(params, max_concurrent=args.gpu_nums*2 + 1, reward_attr="EAO") # max_concurrent: the max running task
+        # max_concurrent: the max running task
+        #algo = HyperOptSearch(params, max_concurrent=args.gpu_nums*args.trial_per_gpu + 1, reward_attr="EAO")
+        algo = HyperOptSearch(params, max_concurrent=args.gpu_nums*args.trial_per_gpu + 1, metric='EAO',  mode='max')
 
-    elif args.dataset.startswith('OTB')  or args.dataset.startswith('VIS') or args.dataset.startswith('GOT10K'):
+    elif args.dataset.startswith('OTB') or args.dataset.startswith('VIS') or args.dataset.startswith('GOT10K'):
         stop = {
             # "timesteps_total": 100, # iteration times
             "AUC": 0.80
