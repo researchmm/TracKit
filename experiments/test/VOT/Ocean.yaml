@@ -1,26 +1,26 @@
 TEST:
-  VOT2018:
+  VOT2018:         # 0.467
     penalty_k: 0.021
     lr: 0.730
     window_influence: 0.321
     small_sz: 255
     big_sz: 271
     ratio: 0.93
-  VOT2019:
+  VOT2019:        # 0.330 (slight higher than paper. small fluctuation is noramal) 
     penalty_k: 0.062
     lr: 0.765
     window_influence: 0.380
     small_sz: 255
     big_sz: 271
     ratio: 0.94
-  VOT2018ON:
+  VOT2018ON:       # also for NOOA version (0.438 for NOOA)
     penalty_k: 0.187
     lr: 0.800
     window_influence: 0.640
     small_sz: 271
     big_sz: 287
     online_ratio: 0.5
-  VOT2019ON:
+  VOT2019ON:      # also for NOOA version (0.323 for NOOA)
     penalty_k: 0.06
     lr: 0.644
     window_influence: 0.484
