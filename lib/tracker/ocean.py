@@ -17,7 +17,7 @@ class Ocean(object):
         self.online = info.online
         self.trt = info.TRT
 
-    def init(self, im, target_pos, target_sz, model, hp=None):
+    def init(self, im, target_pos, target_sz, model, hp=None, yaml_path=None):
         # in: whether input infrared image
         state = dict()
         # epoch test
@@ -31,8 +31,11 @@ class Ocean(object):
             prefix = [x for x in ['OTB', 'VOT'] if x in self.info.dataset]
             if len(prefix) == 0: prefix = [self.info.dataset]
             absPath = os.path.abspath(os.path.dirname(__file__))
-            yname = 'Ocean.yaml'
-            yamlPath = os.path.join(absPath, '../../experiments/test/{0}/'.format(prefix[0]), yname)
+            if yaml_path:
+                yamlPath = yaml_path
+            else:
+                yname = 'Ocean.yaml'
+                yamlPath = os.path.join(absPath, '../../experiments/test/{0}/'.format(prefix[0]), yname)
             cfg = load_yaml(yamlPath)
             if self.online:
                 temp = self.info.dataset + 'ON'
@@ -195,7 +198,7 @@ class Ocean(object):
         x_crop, _ = get_subwindow_tracking(im, target_pos, p.instance_size, python2round(s_x), avg_chans)
         x_crop = x_crop.unsqueeze(0)
 
-        target_pos, target_sz, _ = self.update(net, x_crop.cuda(), target_pos, target_sz*scale_z, window, scale_z, p)
+        target_pos, target_sz, cls_score = self.update(net, x_crop.cuda(), target_pos, target_sz*scale_z, window, scale_z, p)
 
         target_pos[0] = max(0, min(state['im_w'], target_pos[0]))
         target_pos[1] = max(0, min(state['im_h'], target_pos[1]))
@@ -204,6 +207,7 @@ class Ocean(object):
         state['target_pos'] = target_pos
         state['target_sz'] = target_sz
         state['p'] = p
+        state['cls_score'] = cls_score
 
         return state
 
