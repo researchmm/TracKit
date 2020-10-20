@@ -53,10 +53,6 @@ echo ""
 echo "****************** Installing skimage ******************"
 pip install scikit-image
 
-echo ""
-echo ""
-echo "****************** Installing vot python toolkit ******************"
-pip install git+https://github.com/votchallenge/vot-toolkit-python
 
 
 echo ""
@@ -83,14 +79,14 @@ echo ""
 echo ""
 echo "****************** Installing jpeg4py python wrapper ******************"
 pip install jpeg4py 
-
-
-echo ""
-echo ""
-echo "****************** Installing ray==0.8.7 ******************"
+pip install mpi4py
 pip install ray==0.8.7
-pip install ray[tune]
 pip install hyperopt
 
+
+echo ""
+echo ""
+echo "****************** Installing vot python toolkit ******************"
+pip install git+https://github.com/votchallenge/vot-toolkit-python@92241358a172e6815c8b5c4a24a1e89b6d2864a9
 
 echo "****************** Installation complete! ******************"

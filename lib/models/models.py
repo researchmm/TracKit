@@ -1,19 +1,13 @@
-# -----------------------------------------------------------------------------
-# Copyright (c) Microsoft
-# Licensed under the MIT License.
-# Written by Zhipeng Zhang (zhangzhipeng2017@ia.ac.cn)
-# ------------------------------------------------------------------------------
 import math
 import torch
 import torch.nn as nn
 from .ocean import Ocean_
-#from .oceanplus import OceanPlus_
-#from .oceanplusTRT import OceanPlusTRT_
+from .oceanplus import OceanPlus_
 from .oceanTRT import OceanTRT_
 from .siamfc import SiamFC_
 from .connect import box_tower, AdjustLayer, AlignHead, Corr_Up, MultiDiCorr, OceanCorr
 from .backbones import ResNet50, ResNet22W
-#from .mask import MultiRefine, MultiRefineTRT
+from .mask import MMS, MSS
 from .modules import MultiFeatureBase
 
 import os
@@ -27,9 +21,6 @@ import models.online.classifier.linear_filter as target_clf
 from online import TensorList, load_network
 
 
-# ---------------------------
-# Ocean and OceanPlus in xxx
-# ---------------------------
 class Ocean(Ocean_):
     def __init__(self, align=False, online=False):
         super(Ocean, self).__init__()
@@ -49,13 +40,17 @@ class OceanTRT(OceanTRT_):
         self.connect_model2 = OceanCorr()
 
 
-#class OceanPlus(OceanPlus_):
-#    def __init__(self, online=False):
-#        super(OceanPlus, self).__init__()
-#        self.features = ResNet50(used_layers=[3], online=online)   # in param
-#        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
-#        self.connect_model = box_tower(inchannels=256, outchannels=256, towernum=4)
-#        self.mask_model = MultiRefine(addCorr=True, mulOradd='add')
+class OceanPlus(OceanPlus_):
+    def __init__(self, online=False, mms=False):
+        super(OceanPlus, self).__init__()
+        self.features = ResNet50(used_layers=[3], online=online)   # in param
+        self.neck = AdjustLayer(in_channels=1024, out_channels=256)
+        self.connect_model = box_tower(inchannels=256, outchannels=256, towernum=4)
+
+        if mms:
+            self.mask_model = MMS()
+        else:
+            self.mask_model = MSS()
 
 
 #class OceanPlusTRT(OceanPlusTRT_):
@@ -89,8 +84,6 @@ class OninleRes18(MultiFeatureBase):
     args:
         output_layers: List of layers to output.
         net_path: Relative or absolute net path (default should be fine).
-
-    modified from ATOM/DiMP
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

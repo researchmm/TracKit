@@ -28,6 +28,45 @@ except AttributeError:
         return tensor
     torch._utils._rebuild_tensor_v2 = _rebuild_tensor_v2
 
+# ---------------------------------
+# vis
+# ---------------------------------
+def visdom_draw_tracking(visdom, image, box, segmentation=None):
+    if isinstance(box, OrderedDict):
+        box = [v for k, v in box.items()]
+    else:
+        box = (box,)
+    if segmentation is None:
+        visdom.register((image, *box), 'Tracking', 1, 'Tracking')
+    else:
+        visdom.register((image, *box, segmentation), 'Tracking', 1, 'Tracking')
+
+def _visdom_ui_handler(self, data):
+    pause_mode = False
+    if data['event_type'] == 'KeyPress':
+        if data['key'] == ' ':
+            pause_mode = not pause_mode
+
+        elif data['key'] == 'ArrowRight' and pause_mode:
+            self.step = True
+
+def _init_visdom(visdom_info, debug=False):
+    visdom_info = {} if visdom_info is None else visdom_info
+    pause_mode = False
+    step = False
+
+    visdom = Visdom(debug, {'handler': _visdom_ui_handler, 'win_id': 'Tracking'},
+                         visdom_info=visdom_info)
+
+    # Show help
+    help_text = 'You can pause/unpause the tracker by pressing ''space'' with the ''Tracking'' window ' \
+                'selected. During paused mode, you can track for one frame by pressing the right arrow key.' \
+                'To enable/disable plotting of a data block, tick/untick the corresponding entry in ' \
+                'block list.'
+    visdom.register(help_text, 'text', 1, 'Help')
+
+    return visdom
+
 
 # ---------------------------------
 # Functions for FC tracking tools
@@ -249,9 +288,6 @@ def generate_anchor(total_stride, scales, ratios, score_size):
 
 
 class ImageNormalizer(object):
-    """
-    modified from ATOM/DIMP
-    """
 
     def __init__(self, mean, std, in_type='opencv', out_type='pil'):
         """
@@ -290,7 +326,7 @@ class ImageNormalizer(object):
 def crop_with_boxes(img_tensor, x_crop_boxes, out_height, out_width, crop_inds=None, avg_channels=True,
                     has_normed_coords=False):
     """Crop the image tensor by given boxes. The output will be resized to target size
-    modified from ATOM
+
     Params:
         img_tensor: torch.Tensor, in shape of [N, C, H, W]. If N > 1, the crop_inds must be specified.
         crop_boxes: list/numpy.ndarray/torch.Tensor in shape of [K x 4].
@@ -357,7 +393,8 @@ def crop_with_boxes(img_tensor, x_crop_boxes, out_height, out_width, crop_inds=N
 # -----------------------------------
 def load_dataset(dataset):
     """
-    load dataset for testing
+    support OTB and VOT now
+    TODO: add other datasets
     """
     info = {}
 
@@ -658,7 +695,6 @@ Corner = namedtuple('Corner', 'x1 y1 x2 y2')
 BBox = Corner
 Center = namedtuple('Center', 'x y w h')
 
-
 def corner2center(corner):
     """
     [x1, y1, x2, y2] --> [cx, cy, w, h]
@@ -674,7 +710,6 @@ def corner2center(corner):
         h = y2 - y1
         return x, y, w, h
 
-
 def center2corner(center):
     """
     [cx, cy, w, h] --> [x1, y1, x2, y2]
@@ -689,7 +724,6 @@ def center2corner(center):
         x2 = x + w * 0.5
         y2 = y + h * 0.5
         return x1, y1, x2, y2
-
 
 def IoU(rect1, rect2):
     # overlap
@@ -714,10 +748,8 @@ def IoU(rect1, rect2):
 
     return overlap
 
-
 def aug_apply(bbox, param, shape, inv=False, rd=False):
     """
-    modified from SiamRPN
     apply augmentation
     :param bbox: original bbox in image
     :param param: augmentation param, shift/scale
@@ -813,7 +845,7 @@ def get_axis_aligned_bbox(region):
 # poly_iou and _to_polygon comes from Linghua Huang
 def poly_iou(polys1, polys2, bound=None):
     r"""Intersection over union of polygons.
-    modified from GOT10K
+
     Args:
         polys1 (numpy.ndarray): An N x 4 numpy array, each line represent a rectangle
             (left, top, width, height); or an N x 8 numpy array, each line represent
@@ -848,7 +880,7 @@ def poly_iou(polys1, polys2, bound=None):
 
 def _to_polygon(polys):
     r"""Convert 4 or 8 dimensional array to Polygons
-    modified from GOT10k
+
     Args:
         polys (numpy.ndarray): An N x 4 numpy array, each line represent a rectangle
             (left, top, width, height); or an N x 8 numpy array, each line represent
@@ -894,9 +926,6 @@ def print_speed(i, i_time, n, logger):
 
 
 def create_logger(cfg, modelFlag='OCEAN', phase='train'):
-    """
-    modified from SiamRPN++
-    """
     root_output_dir = Path(cfg.OUTPUT_DIR)
     # set up logger
     if not root_output_dir.exists():
@@ -1133,11 +1162,12 @@ def build_lr_scheduler(optimizer, cfg, epochs=50, last_epoch=-1, modelFLAG='OCEA
         return _build_lr_scheduler(optimizer, cfg.TRAIN.LR, epochs, last_epoch)
 
 
+
 # ----------------------------------
 # Some functions for online
-# modified from ATOM and DiMP
 # ----------------------------------
 
+## original utils/params.py
 class TrackerParams:
     """Class for tracker parameters."""
     def free_memory(self):

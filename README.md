@@ -11,6 +11,8 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 </div>
 
 ## News
+:boom: Code of [OceanPlus](https://arxiv.org/pdf/2008.02745v2.pdf) has been released!
+
 :boom: We achieves the runner-ups for both [VOT2020ST (short-term) and RT(real-time)](http://data.votchallenge.net/vot2020/presentations/vot2020-st.pdf). The variants of Ocean take **2nd/3rd/5th** places of VOT2020RT. The [SiamDW-T](https://github.com/researchmm/VOT2019) submitted to VOT2019 achieves **1st** of [VOT2020RGBT](http://data.votchallenge.net/vot2020/presentations/vot2020-rgbt.pdf) (submitted by VOT committee).  
 
 :boom: Our paper [Ocean](https://arxiv.org/pdf/2006.10721v2.pdf) has been accepted by [ECCV2020](https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3872_ECCV_2020_paper.php). 
@@ -31,6 +33,15 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 
 
 ## Trackers
+### OceanPlus
+**[[Paper]](https://arxiv.org/pdf/2008.02745v2.pdf) [[Raw Results]](https://drive.google.com/drive/folders/1R5Ffh-YeoMWrG9yk4z7o-2viHiRr_3zw?usp=sharing) [[Training and Testing Tutorial]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/OceanPlus/oceanplus.md) [[Demo]](https://github.com/researchmm/TracKit/tree/master/demo/oceanplus.gif)** <br/>
+Official implementation of the OceanPlus tracker. It proposes an attention retrieval network (ARN) to perform soft spatial constraints on backbone features. Concretely, we first build a look-up-table (LUT) with the ground-truth mask in the starting frame, and then retrieve the LUT to obtain a target-aware attention map for suppressing the negative influence of pixel-wise background clutter. Furthermore, we introduce a multi-resolution multi-stage segmentation network (MMS) to ulteriorly weaken responses of background clutter by reusing the predicted mask to filter backbone features.
+
+</div>
+<img src="https://github.com/JudasDie/SOTS/blob/master/demo/oceanplu_overview.png"  alt="OceanPlus"/><br/>
+</div>
+
+
 ### Ocean
 
 **[[Paper]](https://arxiv.org/abs/2006.10721) [[Raw Results]](https://drive.google.com/file/d/1vDp4MIkWzLVOhZ-Yt2Zdq8Z_Z0rz6y0R/view?usp=sharing) [[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/Ocean/ocean.md) [[Demo]](https://www.youtube.com/watch?v=83-XCEsQ1Kg&feature=youtu.be)** <br/>
@@ -42,7 +53,7 @@ Official implementation of the Ocean tracker. Ocean proposes a general anchor-fr
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
 </div>
 
-### OceanPlus
+<!-- ### OceanPlus
 Paper and Code will be released soon.
 
 - **Advantages:** only several lines of code (core part) on Ocean, easy to implement.
@@ -57,8 +68,8 @@ Paper and Code will be released soon.
 <div align="left">
   <img src="demo/oceanplus.gif" width="600px" />
   <!-- <p>Example SiamFC, SiamRPN and SiamMask outputs.</p> -->
-</div>
-<img src="https://github.com/penghouwen/TracKit/blob/master/demo/lines.jpg"  alt="Ocean"/><br/>
+<!-- </div>
+<img src="https://github.com/penghouwen/TracKit/blob/master/demo/lines.jpg"  alt="Ocean"/><br/> --> 
 
 ### SiamDW
 **[[Paper]](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Deeper_and_Wider_Siamese_Networks_for_Real-Time_Visual_Tracking_CVPR_2019_paper.pdf) [[Raw Results]](https://github.com/researchmm/SiamDW) [[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/SiamDW/siamdw.md) [[Demo]]()** <br/>
@@ -104,7 +115,7 @@ $TrackSeg
 
 
 ## ToDO
-:anchor: Release paper and code for [OceanPlus]().
+:anchor: Add testing/training code of other trackers.
 
 
 ## Citation

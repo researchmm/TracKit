@@ -1,0 +1,23 @@
+TEST:
+  VOT2020: 
+    penalty_k: 0.06
+    lr: 0.644
+    window_influence: 0.484
+    small_sz: 255
+    big_sz: 287
+    seg_thr: 0.9
+    online_ratio: 0.9
+  DAVIS2016: 
+    penalty_k: 0.032
+    lr: 0.98
+    window_influence: 0.45
+    small_sz: 255
+    big_sz: 287
+    seg_thr: 0.84
+  DAVIS2017: 
+    penalty_k: 0.031
+    lr: 1
+    window_influence: 0.35
+    small_sz: 255
+    big_sz: 287
+    seg_thr: 0.84

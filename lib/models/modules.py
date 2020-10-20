@@ -1,8 +1,3 @@
-# -----------------------------------------------------------------------------
-# Copyright (c) Microsoft
-# Licensed under the MIT License.
-# Written by Zhipeng Zhang (zhangzhipeng2017@ia.ac.cn)
-# ------------------------------------------------------------------------------
 import math
 import torch
 import torch.nn as nn
@@ -49,9 +44,6 @@ def down_spatial(in_planes, out_planes):
 # -------------------------------
 
 class Bottleneck(nn.Module):
-    """
-    modified from SiamRPN++
-    """
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None, dilation=1):
@@ -162,10 +154,6 @@ class Bottleneck_BIG_CI(nn.Module):
 # Modified ResNet
 # ---------------------
 class ResNet_plus2(nn.Module):
-    """
-    modified from SiamRPN++
-    """
-
     def __init__(self, block, layers, used_layers, online=False):
         self.inplanes = 64
         super(ResNet_plus2, self).__init__()
@@ -287,8 +275,8 @@ class ResNet(nn.Module):
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal(m.weight, mode='fan_out')
             elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant(m.weight, 1)
-                nn.init.constant(m.bias, 0)
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
 
     def _make_layer(self, block, planes, blocks, last_relu, stride=1, stride2pool=False, dilation=1):
         """
@@ -343,12 +331,8 @@ class ResNet(nn.Module):
 # ----------------------
 # Modules used by ATOM
 # ----------------------
-
-# modified from ATOM and DiMP
-
 class FeatureBase:
     """Base feature class.
-
     args:
         fparams: Feature specific parameters.
         pool_stride: Amount of average pooling to apply do downsample the feature map.
