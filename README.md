@@ -78,6 +78,10 @@ SiamDW is one of the pioneering work using deep backbone networks for Siamese tr
 <img src="https://github.com/penghouwen/TracKit/blob/master/demo/siamdw_overview.jpg" height="250" alt="SiamDW"/><br/>
 
 ## How To Start
+- Tutorial for **OceanPlus**
+
+  Follow OceanPlus **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/OceanPlus/oceanplus.md)** tutorial
+
 - Tutorial for **Ocean**
 
   Follow Ocean **[[Training and Testing]](https://github.com/researchmm/TracKit/blob/master/lib/tutorial/Ocean/ocean.md)** tutorial 
@@ -107,8 +111,8 @@ $TrackSeg
   |—— VOT2019.json 
   |—— VOT2019
      |—— ants1...
-  |—— VOT2020
-     |—— ants1...
+  |—— DAVIS
+     |—— blackswan...
 |—— ...
 
 ```
