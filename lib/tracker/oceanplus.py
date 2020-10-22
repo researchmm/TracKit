@@ -36,11 +36,11 @@ class OceanPlus(object):
         # single test
         # if not hp and not self.info.epoch_test:
         if True:
-            prefix = [x for x in ['OTB', 'VOT'] if x in self.info.dataset]
+            prefix = [x for x in ['OTB', 'VOT', 'DAVIS'] if x in self.info.dataset]
             if len(prefix) == 0: prefix = [self.info.dataset]
             absPath = os.path.abspath(os.path.dirname(__file__))
             yname='OceanPlus.yaml'
-            yamlPath = os.path.join(absPath, '../../experiments/test/VOT/', yname)
+            yamlPath = os.path.join(absPath, '../../experiments/test/{}/'.format(prefix[0]), yname)
             cfg = load_yaml(yamlPath)
          
             if self.info.dataset not in list(cfg.keys()):

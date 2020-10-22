@@ -29,6 +29,8 @@ python setup.py develop
 
 #### For VOT2020
 
+- **Note: the results are 0.444/0.451 for single stage (MSS) and multi-stage (MMS) models, respectively. This is a bit higher than reproted.**
+
 1. Modify scripts
 
 - Set the model path in line81 of `$TracKit/tracking/vot_wrap.py` or `$TracKit/tracking/vot_wrap_mms.py`.
@@ -55,10 +57,25 @@ CUDA_VISIBLE_DEVICES=0 vot evaluate --workspace  $workspace_path OceanPlus
 vot analysis --workspace $workspace_path OceanPlus --output json
 ```
 
+
 We also provided the trackers submitted to VOT2020 challenge, i.e. [[OceanPlus]](https://drive.google.com/file/d/1DNDZshPed_fcl1DB2lKiOU1bjYC_dxtp/view?usp=sharing), [[OceanPlus-Online]](https://drive.google.com/file/d/1UahJTVPfV0gcqKlBEFc6nwIaqNhyjKQQ/view?usp=sharing), [[OceanPlus-Online-TRT]](https://drive.google.com/file/d/1pdrgyx6XKzN4b3Cyplnr5bcB4TilRS1y/view?usp=sharing).
 
 #### For VOS
-Coming soon ...
+1. prepare data
+Download dataset from DAVIS, and then
+```
+ln -sfb $path_to_DAVIS-trainval $TracKit/dataset/DAVIS
+```
+
+2. run
+```
+CUDA_VISIBLE_DEVICES=0 python tracking/test_oceanplus.py --arch OceanPlus --mms True --dataset DAVIS2016  --resume snapshot/OceanPlusMMS.pth 
+```
+
+3. evaluate
+```
+python lib/core/eval_davis.py --dataset DAVIS2016 --num_threads 1 --datapath dataset/DAVIS
+```
 
 :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:
 
