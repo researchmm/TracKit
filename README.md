@@ -121,6 +121,13 @@ $TrackSeg
 ## Citation
 If any part of our paper or code helps your work, please generouslly cite our work:
 ```
+@article{OceanPlus_arxiv_2020,
+  title={Towards Accurate Pixel-wise Object Tracking by Attention Retrieval},
+  author={Zhipeng Zhang, Bing Li, Weiming Hu, Houwen Peng},
+  journal={arXiv preprint arXiv:2001.10883},
+  year={2020}
+}
+
 @InProceedings{Ocean_2020_ECCV,
 author = {Zhipeng Zhang, Houwen Peng, Jianlong Fu, Bing Li, Weiming Hu},
 title = {Ocean: Object-aware Anchor-free Tracking},
