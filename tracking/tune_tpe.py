@@ -112,8 +112,8 @@ if __name__ == "__main__":
                 "penalty_k": hp.quniform('penalty_k', 0.001, 0.2, 0.001),
                 "scale_lr": hp.quniform('scale_lr', 0.3, 0.8, 0.001),
                 "window_influence": hp.quniform('window_influence', 0.15, 0.65, 0.001),
-                "small_sz": hp.choice("small_sz", [255, 271]),
-                "big_sz": hp.choice("big_sz", [271, 287]),
+                "small_sz": hp.choice("small_sz", [255]),
+                "big_sz": hp.choice("big_sz", [287, 303, 319]),
                 "ratio": hp.quniform('ratio', 0.7, 1, 0.01),
                 }
     if 'VOT' not in args.dataset or not args.align:
