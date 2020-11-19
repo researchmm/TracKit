@@ -16,4 +16,14 @@ In root path `$TracKit`,
 python tracking/test_siamdw.py --arch SiamDW --resume snapshot/siamdw_res22w.pth --dataset VOT2017
 ```
 
-We only provide the testing of best model `Res22W` in this repo. If you want to test other models or training, please follow the instructions of [SiamDW](https://github.com/researchmm/SiamDW). The testing hype-parameters and training of Res22W will be updated later.
+
+### Training
+In root path `$TracKit`,
+1. Download pretrain model from [here](https://drive.google.com/file/d/1E6on7xB0zfu60k5T5yF6gDYVsx0aYtdC/view?usp=sharing) and put it in `pretrain` (named with `pretrain.model`).
+
+2. modify `experiments/train/SiamDW.yaml` according to your needs. (pls use GOT10K with 20w pairs each epoch in my opinion)
+```
+python tracking/train_siamdw.py
+```
+
+Then, pls follow the `epoch testing` and `tuning` as in Ocean.
