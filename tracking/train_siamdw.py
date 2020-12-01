@@ -21,7 +21,7 @@ from torch.optim.lr_scheduler import ExponentialLR, CosineAnnealingLR, ReduceLRO
 import models.models as models
 from utils.utils import create_logger, print_speed, load_pretrain, restore_from, save_model
 from dataset.siamfc import SiamFCDataset
-from core.config import config, update_config
+from core.config_siamdw import config, update_config
 from core.function import siamdw_train
 
 eps = 1e-5
