@@ -135,7 +135,7 @@ If any part of our paper or code helps your work, please generouslly cite our wo
 @InProceedings{Ocean_2020_ECCV,
 author = {Zhipeng Zhang, Houwen Peng, Jianlong Fu, Bing Li, Weiming Hu},
 title = {Ocean: Object-aware Anchor-free Tracking},
-booktitle = {The IEEE Conference on European Conference on Computer Vision (ECCV)},
+booktitle = {European Conference on Computer Vision (ECCV)},
 month = {August},
 year = {2020}
 } 
