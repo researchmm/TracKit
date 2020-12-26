@@ -1,0 +1,8 @@
+TEST:
+  LASOT:
+    penalty_k: 0.11
+    lr: 0.7
+    window_influence: 0.20
+    small_sz: 255
+    big_sz: 255
+

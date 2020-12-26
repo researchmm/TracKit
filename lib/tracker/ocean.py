@@ -28,7 +28,7 @@ class Ocean(object):
 
         # single test
         if not hp and not self.info.epoch_test:
-            prefix = [x for x in ['OTB', 'VOT'] if x in self.info.dataset]
+            prefix = [x for x in ['OTB', 'VOT', 'GOT10K', 'LASOT'] if x in self.info.dataset]
             if len(prefix) == 0: prefix = [self.info.dataset]
             absPath = os.path.abspath(os.path.dirname(__file__))
             yname = 'Ocean.yaml'
