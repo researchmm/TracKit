@@ -20,7 +20,7 @@ python setup.py develop
 
 
 ### Prepare data and models
-1. Download the pretrained [PyTorch model](https://drive.google.com/drive/folders/1DfiuFP2xuclVLzPkPKYkMWJXHKAZLJmk?usp=sharing) and [TensorRT model](https://drive.google.com/file/d/1oY-8Qe5-QQIwEzh6V6MfyZGkTW8Esk-9/view?usp=sharing) to `$TracKit/snapshot`.
+1. Download the pretrained [PyTorch model](https://drive.google.com/drive/folders/1DfiuFP2xuclVLzPkPKYkMWJXHKAZLJmk?usp=sharing) and [TensorRT model](https://drive.google.com/file/d/1aEkBSecYBEw5rbqpAr2b7NqygwV0MusJ/view?usp=sharing) to `$TracKit/snapshot`.
 2. Download [json](https://drive.google.com/drive/folders/10hDmCLLo0c5Hs12kqB--Ctj95UTiFVrH?usp=sharing) files of testing data and put them in `$TracKit/dataset`.
 3. Download testing data e.g. VOT2019 and put them in `$TracKit/dataset`. Please download each data from their official websites, and the directories should be named like `VOT2019`, `OTB2015`, `GOT10K`, `LASOT`.
 
