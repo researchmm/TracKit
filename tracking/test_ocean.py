@@ -26,7 +26,7 @@ from utils.utils import load_pretrain, cxy_wh_2_rect, get_axis_aligned_bbox, loa
 
 from eval_toolkit.pysot.datasets import VOTDataset
 from eval_toolkit.pysot.evaluation import EAOBenchmark
-form lib.core.eval_otb import eval_auc_tune
+from lib.core.eval_otb import eval_auc_tune
 from tqdm import tqdm
 
 def parse_args():
