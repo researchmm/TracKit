@@ -1,6 +1,4 @@
 
-Hiring research interns for visual tracking, segmentation and neural architecture search projects: houwen.peng@microsoft.com
-
 # TracKit
 
 ### This is a toolkit for video object tracking and segmentation.
@@ -11,7 +9,7 @@ Hiring research interns for visual tracking, segmentation and neural architectur
 </div>
 
 ## News
-:boom: Code of [OceanPlus](https://arxiv.org/pdf/2008.02745v2.pdf) has been released!
+:boom: Hiring research interns for visual tracking, segmentation and neural architecture search projects: houwen.peng@microsoft.com
 
 :boom: We achieves the runner-ups for both [VOT2020ST (short-term) and RT(real-time)](http://data.votchallenge.net/vot2020/presentations/vot2020-st.pdf). The variants of Ocean take **2nd/3rd/5th** places of VOT2020RT. The [SiamDW-T](https://github.com/researchmm/VOT2019) submitted to VOT2019 achieves **1st** of [VOT2020RGBT](http://data.votchallenge.net/vot2020/presentations/vot2020-rgbt.pdf) (submitted by VOT committee).  
 
@@ -167,12 +165,6 @@ year = {2020}
 [6] Vu, T., Jang, H., et.al. Cascade RPN: Delving into High-Quality Region Proposal Network with Adaptive Convolution. NIPS2019.
 [7] VOT python toolkit: https://github.com/StrangerZhang/pysot-toolkit 
 ```
-## Contributors
-- **[Zhipeng Zhang](https://github.com/JudasDie)**
-- **[Houwen Peng](https://houwenpeng.com/)**
-
-:dart: Further discussion anbout our paper and code: zhangzhipeng2017@ia.ac.cn
-
 
 
 
