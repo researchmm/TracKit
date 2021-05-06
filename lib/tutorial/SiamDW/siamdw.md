@@ -19,7 +19,7 @@ python tracking/test_siamdw.py --arch SiamDW --resume snapshot/siamdw_res22w.pth
 
 ### Training
 In root path `$TracKit`,
-1. Download pretrain model from [here](https://drive.google.com/file/d/1E6on7xB0zfu60k5T5yF6gDYVsx0aYtdC/view?usp=sharing) and put it in `pretrain` (named with `pretrain.model`).
+1. Download pretrain model from [here](https://drive.google.com/file/d/1wXyW82idctCd4FkqKxvuWsL707joEIeI/view?usp=sharing) and put it in `pretrain` (named with `pretrain.model`).
 
 2. modify `experiments/train/SiamDW.yaml` according to your needs. (pls use GOT10K with 20w pairs each epoch in my opinion)
 ```
