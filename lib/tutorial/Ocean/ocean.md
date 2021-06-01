@@ -20,8 +20,8 @@ python setup.py develop
 
 
 ### Prepare data and models
-1. Download the pretrained [PyTorch model](https://drive.google.com/drive/folders/1DfiuFP2xuclVLzPkPKYkMWJXHKAZLJmk?usp=sharing) and [TensorRT model](https://drive.google.com/file/d/1aEkBSecYBEw5rbqpAr2b7NqygwV0MusJ/view?usp=sharing) to `$TracKit/snapshot`.
-2. Download [json](https://drive.google.com/drive/folders/10hDmCLLo0c5Hs12kqB--Ctj95UTiFVrH?usp=sharing) files of testing data and put them in `$TracKit/dataset`.
+1. Download the pretrained [PyTorch model](https://drive.google.com/drive/folders/1XU5wmyC7MsI6C_9Lv-UH1mwDIh57FFf8?usp=sharing) and [TensorRT model](https://drive.google.com/drive/folders/1HhoilA14rucTOstEw7rBkYkv3UhCgzWT?usp=sharing) to `$TracKit/snapshot`.
+2. Download [json](https://drive.google.com/drive/folders/1kYX_c8rw7HMW0e5V400vaLy9huiYvDHE?usp=sharing) files of testing data and put them in `$TracKit/dataset`.
 3. Download testing data e.g. VOT2019 and put them in `$TracKit/dataset`. Please download each data from their official websites, and the directories should be named like `VOT2019`, `OTB2015`, `GOT10K`, `LASOT`.
 
 ### Testing
@@ -34,7 +34,7 @@ python tracking/test_ocean.py --arch Ocean --resume snapshot/OceanV.pth --datase
 ```
 python lib/eval_toolkit/bin/eval.py --dataset_dir dataset --dataset VOT2019 --tracker_result_dir result/VOT2019 --trackers Ocean
 ```
-You may test other datasets with our code. Please corresponds the provided pre-trained model `--resume` and dataset `--dataset`. See [ocean_model.txt](https://drive.google.com/file/d/163JbUgzljbxFvglWI3jKFFPpqRi7Jca6/view?usp=sharing) for their correspondences.
+You may test other datasets with our code. Please corresponds the provided pre-trained model `--resume` and dataset `--dataset`. See [ocean_model.txt](https://drive.google.com/file/d/1T2QjyxN4movpFtpzCH8xHHX5_Dz7G5Y6/view?usp=sharing) for their correspondences.
 
 
 ### TensorRT toy
@@ -67,7 +67,7 @@ python tracking/test_ocean.py --arch Ocean --resume snapshot/OceanV.pth --datase
 
 
 #### prepare pretrained model
-Please download the pretrained model on ImageNet [here](https://drive.google.com/open?id=1Pwe5NRdOoGiTYlnrOZdL-3S494RkbPQe), and then put it in `$TracKit/pretrain`.
+Please download the pretrained model on ImageNet [here](https://drive.google.com/drive/folders/1ctoxaPiS9qinhmN_bl5z3VNhYnrhl99t?usp=sharing), and then put it in `$TracKit/pretrain`.
 
 #### modify settings
 Please modify the training settings in `$TracKit/experiments/train/Ocean.yaml`. The default number of GPU and batch size in paper are 8 and 32 respectively. 
