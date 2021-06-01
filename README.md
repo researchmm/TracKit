@@ -76,9 +76,6 @@ Official implementation of the OceanPlus tracker. It proposes an attention retri
 </div>
 
 ## How To Start
-- Tutorial for **OceanPlus**
-
-  Follow OceanPlus **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/OceanPlus/oceanplus.md)** tutorial
 
 - Tutorial for **Ocean**
 
@@ -87,6 +84,11 @@ Official implementation of the OceanPlus tracker. It proposes an attention retri
 - Tutorial for **SiamDW**
 
   Follow SiamDW **[[Training and Testing]](https://github.com/researchmm/TracKit/blob/master/lib/tutorial/SiamDW/siamdw.md)** tutorial 
+
+- Tutorial for **OceanPlus**
+
+  Follow OceanPlus **[[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/OceanPlus/oceanplus.md)** tutorial
+
 
 ## Structure
 - `experiments:` training and testing settings
