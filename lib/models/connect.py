@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from .dcn.deform_conv import DeformConv
 
 class Corr_Up(nn.Module):
     """
