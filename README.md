@@ -34,7 +34,7 @@
 
 ### Ocean
 
-**[[Paper]](https://arxiv.org/abs/2006.10721) [[Raw Results]](https://drive.google.com/drive/folders/1w_SifcV_Ddu2TSqaV-14XSgLlKZq2lPN?usp=sharing) [[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/Ocean/ocean.md) [[Demo]](https://www.youtube.com/watch?v=83-XCEsQ1Kg&feature=youtu.be) [[MODELS]]([https://github.com/JudasDie/SOTS](https://github.com/JudasDie/SOTS))** <br/>
+**[[Paper]](https://arxiv.org/abs/2006.10721) [[Raw Results]](https://drive.google.com/drive/folders/1w_SifcV_Ddu2TSqaV-14XSgLlKZq2lPN?usp=sharing) [[Training and Testing]](https://github.com/researchmm/TracKit/tree/master/lib/tutorial/Ocean/ocean.md) [[Demo]](https://www.youtube.com/watch?v=83-XCEsQ1Kg&feature=youtu.be) [[MODELS]](https://github.com/JudasDie/SOTS)** <br/>
 
 Official implementation of the Ocean tracker. Ocean proposes a general anchor-free based tracking framework. It includes a pixel-based anchor-free regression network to solve the weak rectification problem of RPN, and an object-aware classification network to learn robust target-related representation. Moreover, we introduce an effective multi-scale feature combination module to replace heavy result fusion mechanism in recent Siamese trackers. An additional **TensorRT** toy demo is provided in this repo.
 
